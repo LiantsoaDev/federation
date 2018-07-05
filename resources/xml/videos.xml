@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<configuration>
+	<facebook>
+		<iframe>&amp;lt;iframe src=&amp;quot;https://www.facebook.com/plugins/video.php?href={url}&amp;amp;width={width}&amp;amp;show_text=false&amp;amp;height={height}&amp;amp;appId&amp;quot; width=&amp;quot;{width}&amp;quot; height=&amp;quot;{height}&amp;quot; style=&amp;quot;border:none;overflow:hidden&amp;quot; scrolling=&amp;quot;no&amp;quot; frameborder=&amp;quot;0&amp;quot; allowTransparency=&amp;quot;true&amp;quot; allowFullScreen=&amp;quot;true&amp;quot;&amp;gt;&amp;lt;/iframe&amp;gt;</iframe>
+	</facebook>
+	<youtube>
+		<iframe>&amp;lt;iframe width=&amp;quot;{width}&amp;quot; height=&amp;quot;{height}&amp;quot; src=&amp;quot;{url}&amp;quot; frameborder=&amp;quot;0&amp;quot; allow=&amp;quot;autoplay; encrypted-media&amp;quot; allowfullscreen&amp;gt;&amp;lt;/iframe&amp;gt;</iframe>
+	</youtube>
+<dailymotion>
+	<iframe>&lt;iframe frameborder="0" width="480" height="270" src="//www.dailymotion.com/embed/video/x661976" allow=fullscreen allow="autoplay"&gt;&lt;/iframe&gt;</iframe>
+</dailymotion>
+</configuration>
