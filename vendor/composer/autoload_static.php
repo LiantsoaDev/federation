@@ -386,6 +386,7 @@ class ComposerStaticInit0ba5f47a1cef63437d77d908766e44ec
         'App\\Http\\Middleware\\SessionIdevent' => __DIR__ . '/../..' . '/app/Http/Middleware/SessionIdevent.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
+        'App\\Http\\Middleware\\VerifSeason' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifSeason.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Middleware\\VerifySessionid' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifySessionid.php',
         'App\\Http\\Middleware\\VerifyTypePost' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyTypePost.php',

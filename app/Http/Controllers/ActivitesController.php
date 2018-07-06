@@ -10,6 +10,8 @@ use Carbon\Carbon;
 use App\Http\Controllers\ManagersInfo;
 use App\Http\Controllers\CoversController;
 use App\Http\Controllers\MetaDatasController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticlesController;
 
 class ActivitesController extends Controller
 {
@@ -17,6 +19,8 @@ class ActivitesController extends Controller
     private $activite;
     private $saison;
     private $page;
+    private $first;
+    public $season = null;
 
     /**
      * Create a new controller instance.
@@ -29,6 +33,7 @@ class ActivitesController extends Controller
      	$this->activite = new Activite();
           $this->saison = new Saison();
           $this->page = new CoversController();
+          $this->first = new HomeController();
 
      }
 
@@ -72,6 +77,7 @@ class ActivitesController extends Controller
                'start' => 'required',
                'end' => 'required',
                'contenu' => 'required',
+               'lieu' => 'required',
                'tags' => 'required'
           ],['required' => 'Ce champ est obligatoire']);
 
@@ -83,6 +89,7 @@ class ActivitesController extends Controller
           $activity = new Activite();
           $activity->contenu = $request->contenu;
           $activity->tags = $request->tags;
+          $activity->lieu = $request->lieu;
           $activity->saison_id = $insert->id;
           $activity->save();
           return back()->with('success',"Le programme pour la saison ".$insert->saison." a été inséré avec succés !");
@@ -116,6 +123,7 @@ class ActivitesController extends Controller
                'start' => 'required',
                'end' => 'required',
                'contenu' => 'required',
+               'lieu' => 'required',
                'tags' => 'required'
           ],['required' => 'Ce champ est obligatoire']);
 
@@ -126,6 +134,7 @@ class ActivitesController extends Controller
           $updateActivite = Activite::find($request->id);
           $updateActivite->contenu = $request->contenu;
           $updateActivite->tags = $request->tags;
+          $updateActivite->lieu = $request->lieu;
           $updateActivite->save();
           return back()->with('success',"La modification du Programme a été effectué avec succès !");
      }
@@ -155,6 +164,8 @@ class ActivitesController extends Controller
           try{
                $activite = Activite::findOrFail($id);
                $activite->delete();
+               $saison = Saison::findOrFail($id);
+               $saison->delete();
                return back()->with('success',"Le programme a été supprimé avec succès !");
           }
           catch (Exception $e){
@@ -177,9 +188,49 @@ class ActivitesController extends Controller
           $logo = $this->page->getlogo();
 
           //Get programme d'activite
-          
+          $data = $this->activite->findprogramm($this->season);
+          foreach($data as $value)
+          {
+               $current = $value->saison;
+          }
+          $getsaison = Saison::get(['saison']);
+          foreach ($getsaison as $key => $value) {
+               $values[] = $value->saison;
+          }
+          $saison = array_unique($values);
+          $titre = "Programme d'activite : Saison " . $current;
+          $contenu = "le Programme d'activite de la saison ". $current. " de la fédération Malagasy du basket-ball ";
+          $tags = "fmbb, Programme d'activité, saison, Compétition, match, ". $current;
+          $time = date('d-m-Y');
 
-          $seo = MetaDatasController::index($titre, $contenu, $tags, route('front.presentation.fmbb'), $time);
-          return view('front.activite.index',compact('seo','presentation','parameters','logo','titre','contenu','tags','time'));
+          //articles du mois et de la semaine
+          $launes = $this->first->alaune();
+          $unes = ArticlesController::attribution($launes,150);
+
+          $leweek = $this->first->getarticleweek($launes);
+          $week = ArticlesController::attribution($leweek,350);
+
+          $lemois = $this->first->getarticlemois($launes,$leweek);
+          $mois = ArticlesController::attribution($lemois,350);
+
+          //calendrier
+          $calendar = ['01' => 'Janvier', '02' => 'Février', '03' => 'Mars', '04' => 'Avril', '05' => 'Mai', '06' => 'Juin', '07' => 'Juillet', '08' => 'Août', '09' => 'Septembre', '10' => 'octobre', '11' => 'Novembre', '12' => 'Décembre' ];
+
+
+          $seo = MetaDatasController::index($titre, $contenu, $tags, route('front.programme.activite'), $time);
+          return view('front.activite.index',compact('seo','data','parameters','logo','titre','contenu','tags','time','current','saison','week','mois','calendar'));
+     }
+
+     /**
+     * get another programm from over season
+     *
+     * @param \Illuminate\Http\Request
+     * @param \Illuminate\Http\Response
+     */
+
+     public function getanothersaison($saison)
+     {
+          $this->season = $saison;
+          return $this->getactivite();
      }
 }

@@ -48,6 +48,7 @@
                                                 <th>Programme d'activité</th>
                                                 <th>Date de début</th>
                                                 <th>Date fin</th>
+                                                <th>Lieu</th>
                                                 <th>Options</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -61,6 +62,7 @@
                                                 <td>{{$value->contenu}}</td>
                                                 <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{ date('d/m/Y',strtotime($value->debut)) }} </span></td>
                                                 <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{ date('d/m/Y',strtotime($value->fin)) }} </span></td>
+                                                <td>{{$value->lieu}}</td>
                                                 <td>
                                                     <div class="label label-table label-success">{{ (empty($value->options)? 'Aucune option' : $value->options) }}</div>
                                                 </td>

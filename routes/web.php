@@ -29,6 +29,11 @@ Route::get('articles/{id}/{slug}',['as' => 'front.details', 'uses' => 'ArticlesC
     Route::get('reglement-interieur',['as' => 'front.reglement-interieur','uses' => 'ReglementsController@get']);
 //Route Programme d'activite de la fmbb
     Route::get('programme-activite',['as' => 'front.programme.activite','uses' => 'ActivitesController@getactivite']);
+//Route get Autre programme d'activite
+    Route::get('saison/{saison}',['as' => 'front.activite.autre','uses' => 'ActivitesController@getanothersaison'])->where('saison','[a-z0-9\-]+');
+
+//Route Page d'Erreur
+    Route::get('oups',['as' => 'front.error','uses' => 'ErrorsController@index']);
 
 
 /*-----------------------------Backoffice admin -------------------------------------------- */

@@ -175,7 +175,7 @@
                 <span class="btn-social-counter__count"><span class="btn-social-counter__count-num"></span> J'aime</span>
                 <span class="btn-social-counter__add-icon"></span>
               </a>
-              <a href="#" class="btn-social-counter btn-social-counter--twitter" target="_blank">
+              <a href="#" class="btn-social-counter btn-social-counter--gplus" target="_blank">
                 <div class="btn-social-counter__icon">
                   <i class="fa fa-youtube"></i>
                 </div>

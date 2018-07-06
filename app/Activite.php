@@ -23,7 +23,7 @@ class Activite extends Model
      * @var array
      */
 
-    protected $fillable = ['titre','contenu','tags','created_at','updated_at'];
+    protected $fillable = ['titre','contenu','lieu','tags','created_at','updated_at'];
 
     /**
     * get a Query

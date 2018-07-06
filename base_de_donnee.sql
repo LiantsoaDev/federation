@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  mar. 03 juil. 2018 à 08:53
+-- Généré le :  ven. 06 juil. 2018 à 22:26
 -- Version du serveur :  5.6.35
 -- Version de PHP :  7.1.6
 
@@ -299,6 +299,33 @@ INSERT INTO `EVENTS_CATEGORIES` (`IDEVENT`, `IDCATEGORIE`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `fmbb_activites`
+--
+
+CREATE TABLE `fmbb_activites` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `titre` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contenu` text COLLATE utf8mb4_unicode_ci,
+  `lieu` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` tinyint(1) NOT NULL DEFAULT '0',
+  `tags` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `saison_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `fmbb_activites`
+--
+
+INSERT INTO `fmbb_activites` (`id`, `titre`, `contenu`, `lieu`, `options`, `tags`, `created_at`, `updated_at`, `saison_id`) VALUES
+(2, NULL, 'Smatch\'in 2017', NULL, 0, 'smatchin,2017', '2018-07-04 15:10:08', '2018-07-04 15:10:08', 2),
+(3, NULL, 'Smatch\'in 2018', 'Palais des sports Mahamasina', 0, 'smatchin,2018', '2018-07-05 02:42:00', '2018-07-06 13:45:08', 3),
+(4, NULL, 'Essai 2', 'Palais Mahamasina', 0, 'essai,activite', '2018-07-06 12:42:07', '2018-07-06 13:45:48', 4);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `fmbb_missions`
 --
 
@@ -574,7 +601,13 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (42, '2018_05_29_133011_add_column_to_socialmedias', 38),
 (43, '2018_05_31_112612_add_columns_user_id_to_comments', 39),
 (44, '2018_06_25_104447_add_table_fmbb_reglement_interieur', 40),
-(45, '2018_06_25_112337_add_columns_titre_to_reglement_interieur', 41);
+(45, '2018_06_25_112337_add_columns_titre_to_reglement_interieur', 41),
+(46, '2018_07_03_140300_add_table_activite_to_fmbb', 42),
+(47, '2018_07_03_142312_add_column_saison_to_fmbb_activites', 43),
+(48, '2018_07_04_114918_add_table_saison_to_fmbb', 44),
+(49, '2018_07_04_115449_add_columns_to_fmbb_activites', 45),
+(50, '2018_07_04_134918_add_columns_to_saisons', 46),
+(51, '2018_07_06_163156_add_columns_to_fmbb_activites', 47);
 
 -- --------------------------------------------------------
 
@@ -705,6 +738,32 @@ INSERT INTO `RESULTATS` (`IDRESULTAT`, `IDEQUIPE`, `POULEID`, `V`, `D`, `POINTS`
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `saisons`
+--
+
+CREATE TABLE `saisons` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `saison` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `debut` date NOT NULL,
+  `options` tinyint(1) NOT NULL DEFAULT '0',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `fin` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `saisons`
+--
+
+INSERT INTO `saisons` (`id`, `saison`, `debut`, `options`, `created_at`, `updated_at`, `fin`) VALUES
+(1, '2017-2018', '2018-07-04', 0, '2018-07-04 11:06:45', '2018-07-04 11:06:45', '2018-07-11'),
+(2, '2016-2017', '2018-06-07', 0, '2018-07-04 15:10:08', '2018-07-04 15:10:08', '2018-09-11'),
+(3, '2017-2018', '2018-07-05', 0, '2018-07-05 02:42:00', '2018-07-05 02:42:00', '2018-07-12'),
+(4, '2017-2018', '2018-08-02', 0, '2018-07-06 12:42:07', '2018-07-06 12:42:55', '2018-08-16');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `socialmedias`
 --
 
@@ -749,7 +808,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'Rakotoarinia liantsoa', 'tsorakoto@gmail.com', '$2y$10$ndraXqEMMhbPqObZhQLDEO3t5W0BTi3m3ZrPP8ouFw6UhGZKU0ZMC', 'uWODr1b7iWShyjTeV9u50HOhIOzKJt511weZBTPIt7AkMn41rCux0sXhpDgW', '2018-03-27 13:10:28', '2018-03-27 13:49:38');
+(2, 'Rakotoarinia liantsoa', 'tsorakoto@gmail.com', '$2y$10$ndraXqEMMhbPqObZhQLDEO3t5W0BTi3m3ZrPP8ouFw6UhGZKU0ZMC', 'HcGMfxzkSiAES6hWT7C3Wz3FIUZ4viJ4NSrvLKn8U0FM7bpsTFqDrZwY0BTW', '2018-03-27 13:10:28', '2018-03-27 13:49:38');
 
 -- --------------------------------------------------------
 
@@ -850,6 +909,13 @@ ALTER TABLE `EVENTS_CATEGORIES`
   ADD PRIMARY KEY (`IDEVENT`,`IDCATEGORIE`);
 
 --
+-- Index pour la table `fmbb_activites`
+--
+ALTER TABLE `fmbb_activites`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fmbb_activites_saison_id_foreign` (`saison_id`);
+
+--
 -- Index pour la table `fmbb_missions`
 --
 ALTER TABLE `fmbb_missions`
@@ -943,6 +1009,12 @@ ALTER TABLE `RESULTATS`
   ADD KEY `FK_ASSOCIATION_POULES` (`POULEID`);
 
 --
+-- Index pour la table `saisons`
+--
+ALTER TABLE `saisons`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `socialmedias`
 --
 ALTER TABLE `socialmedias`
@@ -1001,6 +1073,11 @@ ALTER TABLE `EQUIPES`
 ALTER TABLE `EVENTS`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
+-- AUTO_INCREMENT pour la table `fmbb_activites`
+--
+ALTER TABLE `fmbb_activites`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT pour la table `fmbb_missions`
 --
 ALTER TABLE `fmbb_missions`
@@ -1044,7 +1121,7 @@ ALTER TABLE `MATCHS`
 -- AUTO_INCREMENT pour la table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT pour la table `POINTS`
 --
@@ -1065,6 +1142,11 @@ ALTER TABLE `REGIONS`
 --
 ALTER TABLE `RESULTATS`
   MODIFY `IDRESULTAT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT pour la table `saisons`
+--
+ALTER TABLE `saisons`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `socialmedias`
 --
@@ -1108,6 +1190,12 @@ ALTER TABLE `EQUIPES`
 --
 ALTER TABLE `EVENTS_CATEGORIES`
   ADD CONSTRAINT `FK_ASSOCIATION_14` FOREIGN KEY (`IDEVENT`) REFERENCES `EVENTS` (`id`);
+
+--
+-- Contraintes pour la table `fmbb_activites`
+--
+ALTER TABLE `fmbb_activites`
+  ADD CONSTRAINT `fmbb_activites_saison_id_foreign` FOREIGN KEY (`saison_id`) REFERENCES `saisons` (`id`);
 
 --
 -- Contraintes pour la table `MATCHS`

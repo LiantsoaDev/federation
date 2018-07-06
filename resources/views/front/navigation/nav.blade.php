@@ -10,95 +10,125 @@
                       <li><a href="{{route('front.missions-attributions')}}">Missions et attributions</a></li>
                       <li><a href="{{route('front.reglement-interieur')}}">Réglements interieurs</a></li>
                       <li><a href="{{route('front.programme.activite')}}">Les Programmes d'activités</a></li>
-                      <li><a href="features-404.html">Les licenciés</a></li>
-                      <li><a href="features-404.html">Partenaires officiels</a></li>
-                      <li><a href="features-404.html">Réglements unifiés des compétitions nationales</a></li>
-                      <li><a href="features-404.html">Les palmarès</a></li>
+                      <li><a href="{{route('front.error')}}">Partenaires officiels</a></li>
+                      <li><a href="{{route('front.error')}}">Réglements unifiés des compétitions nationales</a></li>
+                      <li><a href="{{route('front.error')}}">Les palmarès</a></li>
                     </ul>
                     <ul class="col-lg-4 col-md-3 col-xs-12 main-nav__ul">
                       <li class="main-nav__title">Nos dirigeants </li>
-                      <li><a href="team-overview.html">Les comités executifs</a></li>
-                      <li><a href="team-roster-2.html">Les comités techniques</a></li>
-                      <li><a href="team-roster-2.html">Les dirigeants par régions</a></li>
+                      <li><a href="{{route('front.error')}}">Les comités executifs</a></li>
+                      <li><a href="{{route('front.error')}}">Les comités techniques</a></li>
+                      <li><a href="{{route('front.error')}}">Les dirigeants par régions</a></li>
                     </ul>
                     
                     <div class="col-lg-4 col-md-3 col-xs-12">
                       <ul class="posts posts--simple-list main-nav__ul">
                         <li class="main-nav__title">Notre communauté </li>
-                        <li><a href="team-overview.html">Les comités executifs</a></li>
-                        <li><a href="team-roster-2.html">Les comités techniques</a></li>
-                        <li><a href="team-roster-2.html">Les dirigeants par régions</a></li>
+                        <li><a href="{{route('front.error')}}">Les Entraineurs membres de la WABC</a></li>
+                        <li><a href="{{route('front.error')}}">Les mutations</a></li>
+                        <li><a href="{{route('front.error')}}">Les clubs</a></li>
+                        <li><a href="{{route('front.error')}}">Les Membres de la fédération</a></li>
+                        <li><a href="{{route('front.error')}}">Les Ligues</a></li>
                       </ul>
                     </div>
                   </div>
                 </li>
                 <li class=""><a href="#">N1A</a>
                   <ul class="main-nav__sub">
-                    <li><a href="team-overview.html">Overview</a></li>
-                    <li><a href="team-roster-2.html">Roster</a>
+                    <li><a href="{{route('front.error')}}">Présentation de la N1A</a></li>
+                    <li><a href="{{route('front.error')}}">Les Equipes</a>
                       <ul class="main-nav__sub-2">
-                        <li><a href="team-roster-1.html">Roster - 1</a></li>
-                        <li><a href="team-roster-2.html">Roster - 2</a></li>
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
                       </ul>
                     </li>
-                    <li><a href="team-standings.html">Standings</a></li>
-                    <li><a href="team-last-results.html">Latest Results</a></li>
-                    <li><a href="team-schedule.html">Schedule</a></li>
-                    <li><a href="team-gallery.html">Gallery</a>
+                    <li><a href="{{route('front.error')}}">Les Rêgles</a></li>
+                    <li><a href="{{route('front.error')}}">Les Palmarès</a>
                       <ul class="main-nav__sub-2">
-                        <li><a href="team-gallery-album.html">Single Album</a></li>
+                        <li><a href="{{route('front.error')}}">2018</a></li>
+                        <li><a href="{{route('front.error')}}">2017</a></li>
+                        <li><a href="{{route('front.error')}}">2016</a></li>
+                        <li><a href="{{route('front.error')}}">2015</a></li>
                       </ul>
                     </li>
-                    <li><a href="player-overview.html">Player Pages</a>
-                      <ul class="main-nav__sub-2">
-                        <li><a href="player-overview.html">Overview</a></li>
-                        <li><a href="player-stats.html">Full Statistics</a></li>
-                        <li><a href="player-bio.html">Biography</a></li>
-                        <li><a href="player-news.html">Related News</a></li>
-                        <li><a href="player-gallery.html">Gallery</a></li>
-                      </ul>
-                    </li>
+                    <li><a href="{{route('front.error')}}">Les partenaires</a></li>
+                    <li><a href="{{route('front.error')}}">Les nouvelles</a></li>
+                    <li><a href="{{route('front.error')}}">Les mutations</a></li>
                   </ul>
                 </li>
                 <li class=""><a href="#">FIBA 3x3</a>
                   <ul class="main-nav__sub">
-                    <li><a href="blog-1.html">News - version 1</a></li>
-                    <li><a href="blog-2.html">News - version 2</a></li>
-                    <li><a href="blog-3.html">News - version 3</a></li>
-                    <li><a href="blog-4.html">News - version 4</a></li>
-                    <li><a href="#">Post</a>
+                    <li><a href="{{route('front.error')}}">Présentation de la FIBA 3x3 </a></li>
+                    <li><a href="{{route('front.error')}}">Les Equipes</a>
                       <ul class="main-nav__sub-2">
-                        <li><a href="blog-post-1.html">Single Post - version 1</a></li>
-                        <li><a href="blog-post-2.html">Single Post - version 2</a></li>
-                        <li><a href="blog-post-3.html">Single Post - version 3</a></li>
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
                       </ul>
                     </li>
+                    <li><a href="{{route('front.error')}}">Les Rêgles</a></li>
+                    <li><a href="{{route('front.error')}}">Les Palmarès</a>
+                      <ul class="main-nav__sub-2">
+                        <li><a href="{{route('front.error')}}">2018</a></li>
+                        <li><a href="{{route('front.error')}}">2017</a></li>
+                        <li><a href="{{route('front.error')}}">2016</a></li>
+                        <li><a href="{{route('front.error')}}">2015</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="{{route('front.error')}}">Les partenaires</a></li>
+                    <li><a href="{{route('front.error')}}">Les nouvelles</a></li>
+                    <li><a href="{{route('front.error')}}">Les mutations</a></li>
                   </ul>
                 </li>
                 <li class=""><a href="shop-grid.html">Compétitions</a>
                   <ul class="main-nav__sub">
-                    <li><a href="shop-grid.html">Shop - Grid</a></li>
-                    <li><a href="shop-list.html">Shop - List</a></li>
-                    <li><a href="shop-fullwidth.html">Shop - Full Width</a></li>
-                    <li><a href="shop-product.html">Single Product</a></li>
-                    <li><a href="shop-cart.html">Shopping Cart</a></li>
-                    <li><a href="shop-checkout.html">Checkout</a></li>
-                    <li><a href="shop-wishlist.html">Wishlist</a></li>
-                    <li><a href="shop-login.html">Login</a></li>
-                    <li><a href="shop-account.html">Account</a></li>
+                    <li><a href="{{route('front.error')}}"> U12</a>
+                      <ul class="main-nav__sub-2">
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="team-roster-2.html"> U14 </a>
+                      <ul class="main-nav__sub-2">
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="team-roster-2.html"> U16 </a>
+                      <ul class="main-nav__sub-2">
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="team-roster-2.html"> U18 </a>
+                      <ul class="main-nav__sub-2">
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="team-roster-2.html"> U20</a>
+                      <ul class="main-nav__sub-2">
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="team-roster-2.html"> U22 </a>
+                      <ul class="main-nav__sub-2">
+                        <li><a href="{{route('front.error')}}">Homme</a></li>
+                        <li><a href="{{route('front.error')}}">Femme</a></li>
+                      </ul>
+                    </li>
                   </ul>
                 </li>
-                <li class=""><a href="shop-grid.html">Shop</a>
+                <li class=""><a href="shop-grid.html">Boutique</a>
                   <ul class="main-nav__sub">
-                    <li><a href="shop-grid.html">Shop - Grid</a></li>
-                    <li><a href="shop-list.html">Shop - List</a></li>
-                    <li><a href="shop-fullwidth.html">Shop - Full Width</a></li>
-                    <li><a href="shop-product.html">Single Product</a></li>
-                    <li><a href="shop-cart.html">Shopping Cart</a></li>
-                    <li><a href="shop-checkout.html">Checkout</a></li>
-                    <li><a href="shop-wishlist.html">Wishlist</a></li>
-                    <li><a href="shop-login.html">Login</a></li>
-                    <li><a href="shop-account.html">Account</a></li>
+                    <li><a href="{{route('front.error')}}">Boutique - Vitrine</a></li>
+                    <li><a href="{{route('front.error')}}">Boutique - Produits</a></li>
+                    <li><a href="{{route('front.error')}}">Boutique - Commande personnalisé</a></li>
+                    <li><a href="{{route('front.error')}}">Epingles</a></li>
+                    <li><a href="{{route('front.error')}}">Factures</a></li>
+                    <li><a href="{{route('front.error')}}">Listes des souhaits</a></li>
+                    <li><a href="{{route('front.error')}}">Login</a></li>
+                    <li><a href="{{route('front.error')}}">Mon compte</a></li>
                   </ul>
                 </li>
               </ul>

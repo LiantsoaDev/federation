@@ -5,38 +5,38 @@
 
   <!-- Basic Page Needs
   ================================================== -->
-  <title>{{$seo->siteName}}</title>
+  <title>{{ (empty($seo->siteName)? 'Fédération Malagasy du Basketball' : $seo->siteName ) }}</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="keywords" content="{{$seo->tags}}">
-  <meta name="description" content="{{$seo->description}}" />
+  <meta name="keywords" content="{{ (empty($seo->tags)? 'fmbb, basketball, Madagascar' : $seo->tags) }}">
+  <meta name="description" content="{{ (empty($seo->description)? null : $seo->description ) }}" />
 
   <!-- Schema.org meta for Google+ -->
-  <meta itemprop="name" content="{{$seo->titre}}">
-  <meta itemprop="description" content="{{$seo->description}}">
-  <meta itemprop="image" content="{{$seo->image}}">
+  <meta itemprop="name" content="{{ (empty($seo->titre)? null : $seo->titre ) }}">
+  <meta itemprop="description" content="{{ (empty($seo->description)? null : $seo->description) }}">
+  <meta itemprop="image" content="{{ (empty($seo->image)? null : $seo->image) }}">
 
   <!-- Twitter Card meta -->
-  <meta name="twitter:title" content="{{$seo->titre}}">
-  <meta name="twitter:description" content="{{$seo->twitterDescription}}">
-  <meta name="twitter:url" content="{{$seo->twitterUrl}}" />
+  <meta name="twitter:title" content="{{ (empty($seo->titre)? null : $seo->titre) }}">
+  <meta name="twitter:description" content="{{ (empty($seo->twitterDescription)? null : $seo->twitterDescription) }}">
+  <meta name="twitter:url" content="{{ (empty($seo->twitterUrl)? null : $seo->twitterUrl) }}" />
   <!-- Twitter summary card with large image must be at least 280x150px -->
-  <meta name="twitter:image:src" content="{{$seo->image}}">
+  <meta name="twitter:image:src" content="{{ (empty($seo->image)? null : $seo->image) }}">
 
   <!-- Open Graph meta -->
-  <meta property="og:title" content="{{$seo->titre}}" />
+  <meta property="og:title" content="{{ (empty($seo->titre)? null : $seo->titre) }}" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="{{$seo->twitterUrl}}" />
-  <meta property="og:image" content="{{$seo->image}}" />
-  <meta property="og:description" content="{{$seo->twitterDescription}}" />
-  <meta property="og:site_name" content="{{$seo->siteName}}" />
-  <meta property="article:published_time" content="{{$seo->publishedTime}}" />
-  <meta property="article:modified_time" content="{{$seo->modifiedTime}}" />
-  <meta property="fb:admins" content="{{$seo->fbnumericId}}" />
-  <meta property="fb:app_id" content="{{$seo->fbnumericAppId}}" />
+  <meta property="og:url" content="{{ (empty($seo->twitterUrl)? null : $seo->twitterUrl) }}" />
+  <meta property="og:image" content="{{ (empty($seo->image)? null : $seo->image) }}" />
+  <meta property="og:description" content="{{ (empty($seo->twitterDescription)? null : $seo->twitterDescription) }}" />
+  <meta property="og:site_name" content="{{ (empty($seo->siteName)? null : $seo->siteName) }}" />
+  <meta property="article:published_time" content="{{ (empty($seo->publishedTime)? null : $seo->publishedTime) }}" />
+  <meta property="article:modified_time" content="{{ (empty($seo->modifiedTime)? null : $seo->modifiedTime) }}" />
+  <meta property="fb:admins" content="{{ (empty($seo->fbnumericId)? null : $seo->fbnumericId) }}" />
+  <meta property="fb:app_id" content="{{ (empty($seo->fbnumericAppId)? null : $seo->fbnumericAppId) }}" />
   <meta property="author" content="Author" />
-  <meta property="article:author" content="{{$seo->fbUrlProfile}}" />
-  <meta property="article:publisher" content="{{$seo->fbUrlPage}}" />
+  <meta property="article:author" content="{{ (empty($seo->fbUrlProfile)? null : $seo->fbUrlProfile) }}" />
+  <meta property="article:publisher" content="{{ (empty($seo->fbUrlPage)? null : $seo->fbUrlPage) }}" />
 
   <!-- Favicons
   ================================================== -->

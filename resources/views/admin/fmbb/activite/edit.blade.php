@@ -106,6 +106,32 @@
                                             @endif
 	                                
                                         <!--===================================================-->
+
+                                         <div class="panel-heading">
+                                                <div class="panel-control">
+                                                    <button class="btn btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></button>
+                                                    <button class="btn btn-default" data-click="panel-reload"><i class="fa fa-refresh"></i></button>
+                                                    <button class="btn btn-default" data-click="panel-collapse"><i class="fa fa-chevron-down"></i></button>
+                                                    <button class="btn btn-default" data-dismiss="panel"><i class="fa fa-times"></i></button>
+                                                </div>
+                                                <h3 class="panel-title"><span class="fa fa-map-marker"></span> Lieu de la compétition</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <!--Summernote-->
+                                                <!--===================================================-->
+                                                <textarea class="form-control" rows="3" cols="10" name="lieu">{{ (empty($data->lieu)? null : $data->lieu) }}</textarea>
+                                                <!--===================================================-->
+                                                <!-- End Summernote -->
+                                            </div>
+                                           
+                                            @if( $errors->has('lieu') )
+                                            <div class="panel-body">
+                                                <div class="alert alert-danger" role="alert">
+                                                    <strong>Oh Non !</strong> {{ $errors->first('lieu') }}
+                                                </div>
+                                            </div>
+                                            @endif
+
                                     </div>
                                     <div class="panel">
                                         <div class="panel-heading">

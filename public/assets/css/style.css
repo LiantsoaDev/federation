@@ -217,7 +217,7 @@ input.header-mobile__search-control{margin-top:12px;}
 .main-nav__list li > .main-nav__megamenu,
 .main-nav__list li:hover > .main-nav__megamenu{opacity:1;}
 }
-/*.hero-unit{background:#27313b url("../images/header_bg.jpg") 50% 0 no-repeat;background-size:cover;}*/
+.hero-unit{background:#27313b url("../images/header_bg.jpg") 50% 0 no-repeat;background-size:cover;}
 .hero-unit__content--left-center{text-align:center;}
 @media (min-width:992px){.hero-unit__content--left-center{width:50%;}
 }
@@ -1241,7 +1241,7 @@ ul.posts:not(.post-grid){margin:0;}
 .widget-featured .card__header::before{background-color:#ef2e5b;}
 .widget-featured .widget__content.card__content{padding-bottom:0;}
 .widget-featured .posts__thumb{position:relative;overflow:hidden;}
-.widget-featured .posts__thumb::before{display:block;position:absolute;left:0;right:0;bottom:0;top:0;background-color:rgba(239, 46, 91, 0.8);font-size:54px;line-height:80px;text-align:center;color:#fff;font-family:"Montserrat", sans-serif;font-weight:700;}
+.widget-featured .posts__thumb::before{content:"!";display:block;position:absolute;left:0;right:0;bottom:0;top:0;background-color:rgba(239, 46, 91, 0.8);font-size:54px;line-height:80px;text-align:center;color:#fff;font-family:"Montserrat", sans-serif;font-weight:700;}
 .widget-standings .widget__content{padding:0;}
 .widget-player .widget__content{background-color:#27313b;color:#fff;height:158px;overflow:hidden;position:relative;padding:0 20px 0 140px;background-image:-webkit-radial-gradient(at top left, rgba(255, 255, 255, 0.3), transparent);background-image:radial-gradient(at top left, rgba(255, 255, 255, 0.3), transparent);border-radius:4px;}
 @media (min-width:375px){.widget-player .widget__content{padding-left:158px;}
@@ -2836,9 +2836,9 @@ td.team-leader__avg{text-align:center;}
 .widget-social--grid .btn-social-counter--fb{background-color:#43609c;}
 .widget-social--grid .btn-social-counter--fb:hover{background-color:#4e6cac;}
 .widget-social--grid .btn-social-counter--fb .btn-social-counter__add-icon{background-color:#4e6cac;}
-.btn-social-counter--twitter{background-color:#cc181e;}
-.btn-social-counter--twitter .btn-social-counter__icon{background-color:#cc181e;}
-.btn-social-counter--twitter:hover{background-color:#cc181ea1;}
+.btn-social-counter--twitter{background-color:#3fcef2;}
+.btn-social-counter--twitter .btn-social-counter__icon{background-color:#38c2e5;}
+.btn-social-counter--twitter:hover{background-color:#57d4f4;}
 .widget-social--condensed .btn-social-counter--twitter{background-color:#38c2e5;}
 .widget-social--condensed .btn-social-counter--twitter .btn-social-counter__count{background-color:#3fcef2;}
 .widget-social--grid .btn-social-counter--twitter{background-color:#32b8e4;}
@@ -3324,8 +3324,6 @@ td.team-leader__avg{text-align:center;}
 .text-capitalize{text-transform:capitalize;}
 .text-primary,
 .text-color-primary{color:#ffdc11;}
-.text-secondary{color:#16b54a;}
-.text-tertiary{color:#d24d53;}
 .text-transform-normal{text-transform:none !important;}
 .pt-0{padding-top:0 !important;}
 .pb-0{padding-bottom:0 !important;}

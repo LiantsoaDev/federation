@@ -55,6 +55,7 @@ return array(
     'App\\Http\\Middleware\\SessionIdevent' => $baseDir . '/app/Http/Middleware/SessionIdevent.php',
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
+    'App\\Http\\Middleware\\VerifSeason' => $baseDir . '/app/Http/Middleware/VerifSeason.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Middleware\\VerifySessionid' => $baseDir . '/app/Http/Middleware/VerifySessionid.php',
     'App\\Http\\Middleware\\VerifyTypePost' => $baseDir . '/app/Http/Middleware/VerifyTypePost.php',
