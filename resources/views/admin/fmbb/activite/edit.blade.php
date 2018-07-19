@@ -19,8 +19,8 @@
                                     <form method="POST" action="{{$action}}">
                                         {{csrf_field()}}
                                         
-                                    @if( !empty($data->id) )
-                                        <input type="hidden" name="id" value="{{$data->id}}">
+                                    @if( !empty($data->idactivite) )
+                                        <input type="hidden" name="id" value="{{$data->idactivite}}">
                                     @endif
 
                                     <div class="panel-body">

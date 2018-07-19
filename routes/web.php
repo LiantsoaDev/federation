@@ -31,9 +31,19 @@ Route::get('articles/{id}/{slug}',['as' => 'front.details', 'uses' => 'ArticlesC
     Route::get('programme-activite',['as' => 'front.programme.activite','uses' => 'ActivitesController@getactivite']);
 //Route get Autre programme d'activite
     Route::get('saison/{saison}',['as' => 'front.activite.autre','uses' => 'ActivitesController@getanothersaison'])->where('saison','[a-z0-9\-]+');
+//Route Partenaires
+    Route::get('les-partenaires-de-la-fmbb',['as' => 'front.partner','uses' => 'PartenairesController@index']);
+//Route reglement unifiée
+    Route::get('reglement-unifie-des-compétitions-nationales',['as' => 'front.ruc','uses' => 'UnifieesController@index']);
+//Route Palmares
+    Route::get('les-palmares',['as' => 'front.palmares','uses' => 'PalmaresController@index']);
+//Route Filter Palmares
+    Route::post('filtre-palmares',['as' => 'front.palmares.filter','uses' => 'PalmaresController@filter']);
+
 
 //Route Page d'Erreur
     Route::get('oups',['as' => 'front.error','uses' => 'ErrorsController@index']);
+
 
 
 /*-----------------------------Backoffice admin -------------------------------------------- */
@@ -181,7 +191,43 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     //Route Ajax Activite
     Route::get('ajax-activite/{saison}',['as' => 'ajax.activite','uses' => 'ActivitesController@getByAjaxSeason']);
     //Route delete Activite
-    Route::get('suppression-activite/{id}',['as' => 'activite.delete','uses' => 'ActivitesController@delete']);
+    Route::get('suppression-activite/{id}',['as' => 'activite.delete','uses' => 'ActivitesController@delete'])->where('id','[0-9]+');
+
+    //Route show partenaire backoffice
+    Route::get('partenaires-officiels',['as' => 'admin.fmbb.partner','uses' => 'PartenairesController@show']);
+    //Route insert a new partner backoffice
+    Route::post('insert-partner',['as' => 'admin.partner.insert','uses' => 'PartenairesController@insert']);
+    //Route show form edit partner backoffice
+    Route::get('edit-partner/{id}',['as' => 'admin.partner.edit', 'uses' => 'PartenairesController@edit'])->where('id','[0-9]+');
+    //Route update partner
+    Route::post('update-partner',['as' => 'admin.partner.update','uses' => 'PartenairesController@update']);
+    //Route delete partner
+    Route::get('delete-partner/{id}',['as' => 'admin.partner.delete','uses' => 'PartenairesController@delete'])->where('id','[0-9]+');
+
+    //Route show reglement unifiee backoffice
+    Route::get('edition-reglement-unifie',['as' => 'admin.unifie.show','uses' => 'UnifieesController@show']);
+    //Route inserer reglement unifiee dans la backoffice
+    Route::post('insert-reglement-unifie',['as' => 'admin.unifie.insert' ,'uses' => 'UnifieesController@insert']);
+
+    //Route show Palmares Manager
+    Route::get('gestion-des-palmares',['as' => 'admin.palmares.show', 'uses' => 'PalmaresController@show']);
+    //Route action Palmares
+    Route::post('insertion-palmares',['as' => 'admin.palmares.insert','uses' => 'PalmaresController@insert']);
+    //Route ajax listes des palmares par compétition
+    Route::get('ajax-palmares/{id}',['as' => 'admin.palmares.get','uses' => 'PalmaresController@getcompetition'])->where('id','[0-9]+');
+    //Route affichage edition palmares
+    Route::get('edit-palmares/{id}',['as' => 'admin.palmares.edit','uses'=> 'PalmaresController@edit'])->where('id','[0-9]+');
+    //Route action palmares
+    Route::post('update-palmares',['as' => 'admin.palmares.update','uses' => 'PalmaresController@update']);
+    //Route delete
+    Route::get('delete-palmares/{id}',['as' => 'admin.palmares.delete','uses' => 'PalmaresController@delete'])->where('id','[0-9]+');
+
+    //Route index Categorie
+    Route::get('listes-des-categories',['as' => 'admin.categorie.index','uses' => 'CategoriesController@index']);
+    //Action insertion categorie
+    Route::post('ajout-categorie',['as' => 'admin.categorie.insert','uses' => 'CategoriesController@insert']);
+    //Action modification categorie
+    Route::post('update-categorie',['as' => 'admin.categorie.update', 'uses' => 'CategoriesController@update']);
 
 
 

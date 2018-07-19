@@ -23,7 +23,7 @@ class Activite extends Model
      * @var array
      */
 
-    protected $fillable = ['titre','contenu','lieu','tags','created_at','updated_at'];
+    protected $fillable = ['titre','contenu','lieu','debut','fin','tags','created_at','updated_at'];
 
     /**
     * get a Query
@@ -34,7 +34,7 @@ class Activite extends Model
 
     public static function query()
     {
-    	return DB::table('fmbb_activites')->select('*')->join('saisons','fmbb_activites.saison_id','=','saisons.id');
+    	return DB::table('fmbb_activites')->select('*','fmbb_activites.id as idactivite')->join('saisons','fmbb_activites.saison_id','=','saisons.id');
     }
 
     /**
@@ -66,7 +66,7 @@ class Activite extends Model
 
     public function getOneProgramm($id)
     {
-        return self::query()->where('saisons.id',$id)->first();
+        return self::query()->where('fmbb_activites.id',$id)->first();
     }
 
 }

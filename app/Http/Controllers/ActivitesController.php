@@ -81,18 +81,25 @@ class ActivitesController extends Controller
                'tags' => 'required'
           ],['required' => 'Ce champ est obligatoire']);
 
-          $insert = new Saison();
-          $insert->saison = $request->saison;
-          $insert->debut = date('Y-m-d',strtotime($request->start));
-          $insert->fin = date('Y-m-d',strtotime($request->end));
-          $insert->save();
-          $activity = new Activite();
-          $activity->contenu = $request->contenu;
-          $activity->tags = $request->tags;
-          $activity->lieu = $request->lieu;
-          $activity->saison_id = $insert->id;
-          $activity->save();
-          return back()->with('success',"Le programme pour la saison ".$insert->saison." a été inséré avec succés !");
+          if( $saison = Saison::where('saison',$request->saison)->first() ){
+               $idsaison = $saison->id;
+          }
+          else
+          {
+               $insert = new saison();
+               $insert->saison = $request->saison;
+               $insert->save();
+          }
+          $activite = new Activite();
+          $activite->contenu = $request->contenu;
+          $activite->lieu = $request->lieu;
+          $activite->tags = $request->tags;
+          $activite->debut = date('Y-m-d',strtotime($request->start));
+          $activite->fin = date('Y-m-d',strtotime($request->end));
+          $activite->saison_id = $idsaison;
+          $activite->save();
+
+          return back()->with('success',"Le programme pour la saison ".$saison->saison." a été inséré avec succés !");
      }
 
      /**
@@ -103,9 +110,8 @@ class ActivitesController extends Controller
 
      public function show($id)
      {
-          $get = Saison::findOrFail($id);
-          $saison = $get->saison;
           $data = $this->activite->getOneProgramm($id);
+          $saison = $data->saison;
           $action = action('ActivitesController@update');
           return view('admin.fmbb.activite.edit',compact('action','saison','data'));
      }
@@ -127,14 +133,12 @@ class ActivitesController extends Controller
                'tags' => 'required'
           ],['required' => 'Ce champ est obligatoire']);
 
-          $updateSaison = Saison::find($request->id);
-          $updateSaison->debut = date('Y-m-d',strtotime($request->start));
-          $updateSaison->fin = date('Y-m-d',strtotime($request->end));
-          $updateSaison->save();
           $updateActivite = Activite::find($request->id);
           $updateActivite->contenu = $request->contenu;
           $updateActivite->tags = $request->tags;
           $updateActivite->lieu = $request->lieu;
+          $updateActivite->debut = date('Y-m-d',strtotime($request->start));
+          $updateActivite->fin = date('Y-m-d',strtotime($request->end));
           $updateActivite->save();
           return back()->with('success',"La modification du Programme a été effectué avec succès !");
      }
@@ -164,8 +168,6 @@ class ActivitesController extends Controller
           try{
                $activite = Activite::findOrFail($id);
                $activite->delete();
-               $saison = Saison::findOrFail($id);
-               $saison->delete();
                return back()->with('success',"Le programme a été supprimé avec succès !");
           }
           catch (Exception $e){

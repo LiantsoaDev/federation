@@ -38,6 +38,15 @@
                                                 <li><a href="{{route('admin.addmatch')}}"><i class="fa fa-caret-right"></i> Nv. Match</a></li>
                                             </ul>
                                         </li>
+                                        <!-- categorie -->
+                                        <li>
+                                            <a href="{{route('admin.categorie.index')}}">
+                                            <i class="fa fa-bars"></i>
+                                            <span class="menu-title">Catégories</span>
+                                            <i class="arrow"></i>
+                                            </a>
+                                            <!--Submenu-->
+                                        </li>
                                         <!--Category name-->
                                         <li class="list-header">Contenus</li>
                                         <!--Menu list item-->
@@ -104,11 +113,11 @@
                                                 <li><a href="{{route('admin.fmbb.comite-technique')}}"><i class="fa fa-caret-right"></i> Comités Techniques</a></li>
                                                 <li><a href="{{route('admin.fmbb.region')}}"><i class="fa fa-caret-right"></i> Régions</a></li>
                                                 <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Famille FMBB</a></li>
-                                                <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Partenaires officiels</a></li>
+                                                <li><a href="{{route('admin.fmbb.partner')}}"><i class="fa fa-caret-right"></i> Partenaires officiels</a></li>
                                                 <li><a href="{{route('admin.fmbb.mission')}}"><i class="fa fa-caret-right"></i> Missions et attributions </a></li>
                                                 <li><a href="{{route('admin.reglement.interieur')}}"><i class="fa fa-caret-right"></i> Réglement intérieur </a></li>
                                                 <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Historiques </a></li>
-                                                <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Palmarés </a></li>
+                                                <li><a href="{{route('admin.palmares.show')}}"><i class="fa fa-caret-right"></i> Palmarés </a></li>
                                                 <li>
                                                     <a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Programme d'activités   <span class="label label-mint pull-right"> + </span></a>
                                                     <ul class="collapse">
@@ -116,7 +125,7 @@
                                                     </ul>
                                                 </li>
                                                 <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Licenciés </a></li>
-                                                <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> R.U.C </a></li>
+                                                <li><a href="{{route('admin.unifie.show')}}"><i class="fa fa-caret-right"></i> R.U.C </a></li>
                                             </ul>
                                         </li>
                                          <!--Menu list item-->
@@ -398,7 +407,7 @@
        <script src="{{asset('plugins/bootstrap-datepicker/bootstrap-datepicker.js')}}"></script>
         <script type="text/javascript">
             $('#datepicker').datepicker({
-                format: "dd MM, yyyy",
+                format: "yyyy-mm-dd",
                 todayBtn: "linked",
                 autoclose: true,
                 todayHighlight: true

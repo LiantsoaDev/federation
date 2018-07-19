@@ -10,9 +10,9 @@
                       <li><a href="{{route('front.missions-attributions')}}">Missions et attributions</a></li>
                       <li><a href="{{route('front.reglement-interieur')}}">Réglements interieurs</a></li>
                       <li><a href="{{route('front.programme.activite')}}">Les Programmes d'activités</a></li>
-                      <li><a href="{{route('front.error')}}">Partenaires officiels</a></li>
-                      <li><a href="{{route('front.error')}}">Réglements unifiés des compétitions nationales</a></li>
-                      <li><a href="{{route('front.error')}}">Les palmarès</a></li>
+                      <li><a href="{{route('front.partner')}}">Partenaires officiels</a></li>
+                      <li><a href="{{route('front.ruc')}}">Réglements unifiés des compétitions nationales</a></li>
+                      <li><a href="{{route('front.palmares')}}">Les palmarès</a></li>
                     </ul>
                     <ul class="col-lg-4 col-md-3 col-xs-12 main-nav__ul">
                       <li class="main-nav__title">Nos dirigeants </li>
