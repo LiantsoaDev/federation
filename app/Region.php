@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class Region extends Model
 {
-    protected $fillable = ['idregion','libelle','president'];
+    protected $fillable = ['idregion','libelle','president','logo_ligue','img_region'];
 
  	/**
  	* Fonction get information d'une region par idregion

@@ -74,15 +74,13 @@
     <div class="site-content">
       <div class="container">
   
-    @foreach($palmares as $key => $value)
-      @if( !array_is_empty($palmares->$key) )
         <!-- Wishlist -->
         <div class="card card--has-table">
           <div class="card__header">
-            <h4>Compétition {{$key}}</h4>
+            <h4>Résultats de la recherche : <b>{{count($palmares)}} résultat(s) trouvé(s)</b></h4>
           </div>
           <div class="card__content">
-
+          @if( !array_is_empty($palmares) )
             <div class="table-responsive">
               <table class="table shop-table">
                 <thead>
@@ -95,7 +93,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                @foreach( $value as $palm)
+                @foreach( $palmares as $palm)
                   <tr>
                     <td class="product__photo">
                       <figure class="product__thumb">
@@ -127,12 +125,10 @@
                 </tbody>
               </table>
             </div>
-
+            @endif
           </div>
         </div>
         <!-- Wishlist / End -->
-      @endif
-    @endforeach
 
       </div>
     </div>

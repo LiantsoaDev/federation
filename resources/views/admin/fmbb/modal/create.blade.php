@@ -53,9 +53,15 @@
                 </div>
                 @endif
                 <div class="form-group">
-                  <label for="psw"><span class="fa fa-image"></span> &nbsp;Photo de profil ou Avatar</label>
+                  <label for="psw"><span class="fa fa-image"></span> &nbsp;{{ (empty($option)? 'Photo de profil ou Avatar' : 'Image localisation géographique de la ligue') }}</label>
                   <input type="file" class="form-control" id="psw" name="file">
                 </div>
+                @if(!empty($option))
+                 <div class="form-group">
+                  <label for="psw"><span class="fa fa-image"></span> &nbsp;Logo de la Ligue</label>
+                  <input type="file" class="form-control" id="psw" name="logo">
+                </div>
+                @endif
             </div>
             <div class="modal-footer">
               <button type="reset" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="fa fa-times"></span> Annuler</button>

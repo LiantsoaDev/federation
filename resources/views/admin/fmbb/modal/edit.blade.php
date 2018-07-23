@@ -18,10 +18,17 @@
                   <input type="text" class="form-control" id="psw" name="region" value="{{$str->LIBELLE}}">
                 </div>
                 @endif
+                @if( !empty($str->noms))
                 <div class="form-group">
                   <label for="usrname"><span class="fa fa-user"></span> &nbsp;Nom et prénom</label>
                   <input type="text" class="form-control" id="usrname" name="noms" value="{{$str->noms}}">
                 </div>
+                @elseif( !empty($str->president))
+                <div class="form-group">
+                  <label for="usrname"><span class="fa fa-user"></span> &nbsp;Nom et prénom</label>
+                  <input type="text" class="form-control" id="usrname" name="noms" value="{{$str->president}}">
+                </div>
+                @endif
                 @if($modal == 'comite')
                 <div class="form-group">
                   <label for="psw"><span class="fa fa-briefcase"></span> &nbsp;Fonction</label>
@@ -55,10 +62,16 @@
                   <input type="numeric" class="form-control" id="psw" name="validation" value="{{$str->validation}}">
                 </div>
                 @endif
+                @if(!empty($option))
                 <div class="form-group">
-                  <label for="psw"><span class="fa fa-image"></span> &nbsp;Photo de profil ou Avatar</label>
-                  <input type="file" class="form-control" id="psw" name="file">
+                  <label for="psw"><span class="fa fa-image"></span> &nbsp;Logo de la Ligue</label>
+                  <input type="file" class="form-control" id="psw" name="logo">
                 </div>
+                <div class="form-group">
+                  <label for="psw"><span class="fa fa-image"></span> &nbsp;Localisation géographique de la région</label>
+                  <input type="file" class="form-control" id="psw" name="img">
+                </div>
+                @endif
             </div>
             <div class="modal-footer">
               <button type="reset" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="fa fa-times"></span> Annuler</button>

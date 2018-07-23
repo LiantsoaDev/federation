@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class Palmares extends Model
 {
@@ -54,16 +55,25 @@ class Palmares extends Model
      }
 
      /**
-     * Scope a query to only category.
+     * Scope a query to filter DBBuilder.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
 
-     public function OfCategory($category=null)
+     public function filters(Request $request)
      {
-          if( !empty($category) )
-               return $this->query->where('categories.libellecategorie',$category);
-     }
+          $requete = $this->query;
+          if( !empty($request->categorie) )
+               $requete = $requete->where('categories.libellecategorie',$request->categorie);
+          if( !empty($request->date) )
+               $requete = $requete->where('palmares.date','like','%'.$request->date.'%');
+          if( !empty($request->trophy) )
+               $requete = $requete->where('palmares.prix','like','%'.$request->trophy.'%');
+          if( !empty($request->genre) )
+               $requete = $requete->where('palmares.genre',$request->genre);
 
+          return $requete;
+
+     }
 }

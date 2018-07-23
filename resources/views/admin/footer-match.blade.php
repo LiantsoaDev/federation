@@ -124,7 +124,7 @@
                                                         <li><a href="{{route('admin.fmbb.activite')}}"><i class="fa fa-caret-right"></i> saison {{ \Carbon\Carbon::now()->subYear()->year }}-{{ \Carbon\Carbon::now()->year }} </a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Licenciés </a></li>
+                                                <li><a href="{{route('admin.wabc.show')}}"><i class="fa fa-caret-right"></i> W.A.B.C </a></li>
                                                 <li><a href="{{route('admin.unifie.show')}}"><i class="fa fa-caret-right"></i> R.U.C </a></li>
                                             </ul>
                                         </li>

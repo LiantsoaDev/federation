@@ -169,11 +169,7 @@ class PalmaresController extends Controller
 
     public function index()
     {
-        //configuration du site
-        $parameters = ManagersInfo::index();
-        $logo = $this->page->getlogo();
         $querypalmares = new Palmares();
-
         $tabpalmares = [];
         $getsaison = Categorie::get(['id','libellecategorie']);
         foreach($getsaison as $ids)
@@ -189,12 +185,16 @@ class PalmaresController extends Controller
         $palmares = json_decode(json_encode($tabpalmares),false);
         $dates = array_unique($date);
         $compets = array_unique($compet);
-        $titre = 'Les Palmarès de la fédération Malagasy du Basket-ball';
-        $tags = 'Palmarès, fmbb,'.date('d/m/Y').', compétition, médaille, coupe';
-        $contenu = 'Les Palmarès de la fédération Malagasy du Basket-ball depuis son existence';
-        $time = date('d-M-Y H');
-        $action = action('PalmaresController@filter');
-        $seo = MetaDatasController::index($titre,$contenu,$tags,route('front.palmares'),$time);
+
+        //configuration du site et metadonnées
+        $variables = $this->metadata();
+        $titre = $variables->titre;
+        $contenu = $variables->contenu;
+        $tags = $variables->tags;
+        $time = $variables->time;
+        $parameters = $variables->parameters;
+        $logo = $variables->logo;
+        $action = $variables->action;
         return view('front.palmares.index',compact('titre','contenu','tags','time','palmares','parameters','logo','dates','compets','action'));
     }
 
@@ -207,11 +207,50 @@ class PalmaresController extends Controller
 
     public function filter(Request $request)
     {
-        $palmares = new Palmares();
-        $palmares->query = $palmares->getQueryPalmares();
-        $result = $palmares->OfCategory($request->categorie)->OfDate($request->date)->OfTrophy($request->trophy)->OfGenre($request->genre);
-        //$result->get();
-        dd($result);
+        $instance = new Palmares();
+        $instance->query = $instance->getQueryPalmares();
+        $palmares = $instance->filters($request)->get();
+        //listes compétitions
+        $getcompet = $instance->getQueryPalmares()->get();
+        foreach ($getcompet as $value) {
+            $compet[] = $value->libellecategorie;
+            $date[] = date('Y',strtotime($value->date));
+        }
+        $compets = array_unique($compet);
+        $dates = array_unique($date);
+
+        //configuration du site et metadonnée
+        $variables = $this->metadata();
+        $titre = $variables->titre;
+        $contenu = $variables->contenu;
+        $tags = $variables->tags;
+        $time = $variables->time;
+        $parameters = $variables->parameters;
+        $logo = $variables->logo;
+        $action = $variables->action;
+        return view('front.palmares.result',compact('titre','contenu','tags','time','palmares','parameters','logo','dates','compets','action'));
+    }
+
+    /**
+    * Meta data for Palmares Front-End
+    * 
+    * @return \Illuminate\Http\Response
+    */
+
+    public function metadata()
+    {
+        //configuration du site
+        $parameters = ManagersInfo::index();
+        $logo = $this->page->getlogo();
+
+        $titre = 'Les Palmarès de la fédération Malagasy du Basket-ball';
+        $tags = 'Palmarès, fmbb,'.date('d/m/Y').', compétition, médaille, coupe';
+        $contenu = 'Les Palmarès de la fédération Malagasy du Basket-ball depuis son existence';
+        $time = date('d-M-Y H');
+        $action = action('PalmaresController@filter');
+        $seo = MetaDatasController::index($titre,$contenu,$tags,route('front.palmares'),$time);
+        $return =  ['parameters' => $parameters, 'logo' => $logo,'titre' => $titre,'contenu' => $contenu, 'time' => $time, 'action' => $action, 'seo' => $seo,'tags' => $tags];
+        return json_decode(json_encode($return),false);
     }
 
 }

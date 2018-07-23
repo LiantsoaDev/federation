@@ -8,11 +8,16 @@ use App\Http\Controllers\ImagesController;
 use App\Image;
 use Validator;
 
+use App\Http\Controllers\ManagersInfo;
+use App\Http\Controllers\CoversController;
+use App\Http\Controllers\MetaDatasController;
+
 class StructuresController extends Controller
 {
     //
 	private $structure;
 	private $img;
+  private $page;
 
 	/**
      * Create a new controller instance.
@@ -23,6 +28,7 @@ class StructuresController extends Controller
      {
         $this->structure = new Structure();
         $this->img = new ImagesController();
+        $this->page = new CoversController();
      }
 
      /**
@@ -129,4 +135,27 @@ class StructuresController extends Controller
         $member->delete();
         return back()->with('success',"Le Membre a été supprimé avec succès !");
      }
+
+     /**
+     * Get Comite executif
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+     public function getExecutif()
+     {
+        //configuration du site
+        $parameters = ManagersInfo::index();
+        $logo = $this->page->getlogo();
+        $titre = 'Les comités executifs de la fédération Malagasy du basket-ball';
+        $contenu = $titre;
+        $tags = 'comite, executif,'.date('Y').', fmbb, basket-ball, Madagascar';
+        $time = date('Y-m-d H');
+
+        $datas  = Structure::orderBy('position_system','asc')->get();
+
+        $seo = MetaDatasController::index($titre,$contenu,$tags,route('front.comite.executif'),$time);
+        return view('front.comite.executif.index',compact('parameters','logo','titre','contenu','tags','time','seo','datas'));
+     }
+
 }

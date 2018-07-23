@@ -8,11 +8,16 @@ use App\Image;
 use App\Technique;
 use Validator;
 
+use App\Http\Controllers\ManagersInfo;
+use App\Http\Controllers\CoversController;
+use App\Http\Controllers\MetaDatasController;
+
 class TechniquesController extends Controller
 {
     //
   	private $img;
   	private $technique;
+    private $page;
 
   	 /**
      * Create a new controller instance.
@@ -23,6 +28,7 @@ class TechniquesController extends Controller
      {
         $this->img = new ImagesController();
         $this->technique = new Technique();
+        $this->page = new CoversController();
      }
 
      /**
@@ -122,5 +128,27 @@ class TechniquesController extends Controller
         $member = Technique::find($request->route('id'));
         $member->delete();
         return back()->with('success',"Le Membre a été supprimé avec succès !");
+     }
+
+     /**
+     * Get Comite executif
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+     public function getTechnique()
+     {
+        //configuration du site
+        $parameters = ManagersInfo::index();
+        $logo = $this->page->getlogo();
+        $titre = 'Les comités techniques de la fédération Malagasy du basket-ball';
+        $contenu = $titre;
+        $tags = 'comite, techniques,'.date('Y').', fmbb, basket-ball, Madagascar, staff';
+        $time = date('Y-m-d H');
+
+        $datas  = Technique::orderBy('id','asc')->get();
+
+        $seo = MetaDatasController::index($titre,$contenu,$tags,route('front.comite.technique'),$time);
+        return view('front.comite.technique.index',compact('parameters','logo','titre','contenu','tags','time','seo','datas'));
      }
 }

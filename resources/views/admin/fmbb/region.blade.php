@@ -16,6 +16,8 @@
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
+                                                        <th>Géolocalisation</th>
+                                                        <th>Logo de la ligue</th>
                                                         <th>Nom de la Région</th>
                                                         <th>Président réprésentant</th>
                                                         <th>Contrôle</th>
@@ -25,6 +27,12 @@
                                                     @foreach($lists as $key => $str)
                                                     <tr>
                                                         <td>{{$key}}</td>
+                                                        <td>
+                                                            <div class="text-center"><img src="{{asset('images/regions/'.$str->img_region)}}" class="rounded" alt="..." width="100" height="100"></div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="text-center"><img src="{{asset('images/regions/'.$str->logo_ligue)}}" class="rounded" alt="..." width="100" height="100"></div>
+                                                        </td>
                                                         <td>{{$str->LIBELLE}}</td>
                                                         <td>{{$str->president}}</td>
                                                         @if(!empty($str))

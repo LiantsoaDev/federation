@@ -39,6 +39,12 @@ Route::get('articles/{id}/{slug}',['as' => 'front.details', 'uses' => 'ArticlesC
     Route::get('les-palmares',['as' => 'front.palmares','uses' => 'PalmaresController@index']);
 //Route Filter Palmares
     Route::post('filtre-palmares',['as' => 'front.palmares.filter','uses' => 'PalmaresController@filter']);
+//Route Comite executif
+    Route::get('les-comites-executifs',['as' => 'front.comite.executif','uses' => 'StructuresController@getExecutif']);
+//Route Comite Technique
+    Route::get('les-comites-techniques',['as' => 'front.comite.technique','uses' => 'TechniquesController@getTechnique']);
+//Route ligue et region
+    Route::get('ligues-et-regions',['as' => 'front.ligue.region','uses' => 'RegionsController@getRegion']);
 
 
 //Route Page d'Erreur
@@ -136,6 +142,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::post('add-region', ['as' => 'admin.fmbb.add-region','uses'=>'RegionsController@create']);
         //update region
         Route::post('update-region',['as' => 'admin.fmbb.update-region','uses'=>'RegionsController@edit']);
+        //Supprimer une region
+        Route::get('suppression-region/{id}',['as' => 'admin.region.delete','uses' => 'RegionsController@delete'])->where('id','[0-9]+');
         //gestion Mission et attribution
         Route::get('missions-attributions',['as' => 'admin.fmbb.mission','uses'=>'MissionsController@index']);
         //add Mission
@@ -228,6 +236,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('ajout-categorie',['as' => 'admin.categorie.insert','uses' => 'CategoriesController@insert']);
     //Action modification categorie
     Route::post('update-categorie',['as' => 'admin.categorie.update', 'uses' => 'CategoriesController@update']);
+
+    //Route gestion des membres de WABC
+    Route::get('gestion-membres-wabc',['as' => 'admin.wabc.show','uses' => 'WabcsController@show']);
+    //Route Action  : ajout membre WABC
+    Route::post('ajout-wabc',['as' => 'action.community.add','uses' => 'WabcsController@insert']);
+    //Route Action update : update membre WABC
+    Route::post('update-wabc',['as' => 'action.community.update','uses' => 'WabcsController@update']);
+    //Route suppression membre WABC
+    Route::get('supprimer-membre-wabc/{id}',['as' => 'admin.community.delete','uses' => 'WabcsController@delete'])->where('id','[0-9]+');
 
 
 

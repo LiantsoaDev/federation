@@ -16,9 +16,9 @@
                     </ul>
                     <ul class="col-lg-4 col-md-3 col-xs-12 main-nav__ul">
                       <li class="main-nav__title">Nos dirigeants </li>
-                      <li><a href="{{route('front.error')}}">Les comités executifs</a></li>
-                      <li><a href="{{route('front.error')}}">Les comités techniques</a></li>
-                      <li><a href="{{route('front.error')}}">Les dirigeants par régions</a></li>
+                      <li><a href="{{route('front.comite.executif')}}">Les comités executifs</a></li>
+                      <li><a href="{{route('front.comite.technique')}}">Les comités techniques</a></li>
+                      <li><a href="{{route('front.ligue.region')}}">Les dirigeants par régions</a></li>
                     </ul>
                     
                     <div class="col-lg-4 col-md-3 col-xs-12">
