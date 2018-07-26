@@ -34,9 +34,6 @@
                         </div>
                         <h3 class="posts__title">{{$u->titre}}</h3>
                         <div class="post-author">
-                          <figure class="post-author__avatar">
-                            <img src="{{asset('assets/images/samples/avatar-4.jpg')}}" alt="Post Author Avatar">
-                          </figure>
                           <div class="post-author__info">
                             <h4 class="post-author__name">fédération Malagasy du BasketBall</h4>
                             <time datetime="2017-08-28" class="posts__date">Publié le {{date('d-m-Y',strtotime($u->date_publication))}}</time>
@@ -66,7 +63,7 @@
                    </div>
                    <h6 class="posts__title"><a href="{{route('front.details',[$une->id,$une->slug])}}">{{$une->titre}}</a></h6>
                    <time datetime="2017-08-23" class="posts__date">{{date('F j, Y',strtotime($une->date_publication))}}</time>
-                 </div>
+                 </div> 
                </li>
                @endforeach
              </ul>

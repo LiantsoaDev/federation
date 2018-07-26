@@ -45,6 +45,8 @@ Route::get('articles/{id}/{slug}',['as' => 'front.details', 'uses' => 'ArticlesC
     Route::get('les-comites-techniques',['as' => 'front.comite.technique','uses' => 'TechniquesController@getTechnique']);
 //Route ligue et region
     Route::get('ligues-et-regions',['as' => 'front.ligue.region','uses' => 'RegionsController@getRegion']);
+//Route entraineurs membre de la WABC
+    Route::get('les-entraineurs-membres-de-la-wabc',['as' => 'front.coaches.get','uses' => 'WabcsController@getWabc']);
 
 
 //Route Page d'Erreur

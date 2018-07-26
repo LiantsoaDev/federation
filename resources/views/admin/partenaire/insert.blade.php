@@ -35,7 +35,10 @@
                  <label for="psw"><span class="fa fa-image"></span> &nbsp;Icône ou logo du partenaire</label>
                  <input type="file" class="form-control" id="psw" name="file">
                </div>
-               <small><code>Information : </code> La taille du logo ou icône page doit être au moins de <code>600x600px</code> et le fichier doit être un <code>.png ou .jpeg ou .svg ou .jpg</code></small>
+               <small><code>Information : </code> La taille du logo ou icône page doit être au moins de <code>600x600px</code> et le fichier doit être un <code>.png ou .jpeg ou .svg ou .jpg</code></small><hr>
+               <div class="alert alert-dark" role="alert">
+                  <strong><small>Taille standard : </small></strong> 583 x 418 px
+                </div>
 
            </div>
            <div class="modal-footer">

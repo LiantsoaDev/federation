@@ -87,8 +87,10 @@ class ImagesController extends Controller
                 $finalchaine = substr($newchaine, -strlen($newchaine),  -1);
             }
             else
-                $finalchaine = $newchaine;
-
+            {
+                $update = str_replace('||',"|",$newchaine);
+                $finalchaine = $update;
+            }
 
             File::delete(public_path() . '/images/uploads/'. $nomImage);
             $this->image->updateImageBy($imageid,['urlimages' => $finalchaine]);

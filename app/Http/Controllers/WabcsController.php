@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Wabc;
+use App\Http\Controllers\ManagersInfo;
+use App\Http\Controllers\CoversController;
+use App\Http\Controllers\MetaDatasController;
 
 class WabcsController extends Controller
 {
@@ -14,6 +17,7 @@ class WabcsController extends Controller
     */
 
     private $lists;
+    private $page;
 
     /**
     * a instance of Controller
@@ -24,6 +28,7 @@ class WabcsController extends Controller
     public function __construct()
     {
     	$this->lists = new Wabc();
+    	$this->page = new CoversController();
     }
 
     /**
@@ -126,6 +131,25 @@ class WabcsController extends Controller
     * 
     * @return \Illuminate\Http\Request
     */
+
+    public function getWabc()
+    {
+    	//configuration du site
+        $parameters = ManagersInfo::index();
+        $logo = $this->page->getlogo();
+        //content
+        $datas = Wabc::all();
+
+        $titre = 'La liste des entraineurs membres de la WABC (World Associations of Basketball Coaches)';
+        $contenu = $titre;
+        $tags = 'WABC, entraineurs, membres, fmbb, Madagascar, fédération Malagasy du Basket-ball,'.date('Y-m-d H');
+        $time = date('Y-m-d H');
+        //SEO - referencement
+        $seo = MetaDatasController::index($titre,$contenu,$tags,route('front.comite.executif'),$time);
+        //return value
+        return view('front.coaches.index',compact('titre','contenu','parameters','logo','datas','time','tags'));
+    	
+    }
 
 
 }

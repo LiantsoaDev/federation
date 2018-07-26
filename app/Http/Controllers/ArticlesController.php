@@ -349,9 +349,9 @@ class ArticlesController extends Controller
     public function showmodificationArticle($idarticle)
     {
     	$details = $this->article->detailarticle($idarticle);
-      foreach ($details as $value) {
-          $details->contenu = str_replace("<br />","\n",$details->contenu);
-      }
+        foreach ($details as $value) {
+            $details->contenu = str_replace("<br />","\n",$details->contenu);
+        }
     	$categorie = ['Equipe','Injurie','Compétition','Fait divers','Organisation','Formation','Arbitrage','Actualité'];
     	$images = explode("|",$details->urlimages);
 
@@ -379,6 +379,7 @@ class ArticlesController extends Controller
     		'contenu' => nl2br($request->input('contenu_article')),
     		'tag' => $request->input('tag_article'),
     		'page_titre' => strtolower($request->input('titre_article')),
+            'categorie' => $request->input('categorie_article'),
     		'page_description' => Article::trunque($request->input('contenu_article'),160),
     		'date_publication' => date('Y-m-d H:i:s',strtotime($request->input('date_article')))
     	]);
@@ -526,8 +527,23 @@ class ArticlesController extends Controller
     */
     public function misenUne($idarticle)
     {
-        $articleune = $this->article->updateToUne($idarticle,intval(1));
-        return back()->with('success',"L'article a bien été mis en Une de la publicité et affichera en priorité! <br>");
+        try{
+        //verifier si le nombre de Une permet l'opération
+        $nbre = $this->article->counter();
+        if( $nbre >= 5){
+            return back()
+            ->with('error','Attention ! Liberé des articles en <code>Une</code> pour assigner de nouvelle ! <br> Le nombre actuel est de '.$nbre);
+            exit();
+        }else{
+            $articleune = $this->article->updateToUne($idarticle,intval(1));
+            return back()->with('success',"L'article a bien été mis en Une de la publicité et affichera en priorité! <br>");
+        }
+        }
+        catch (Exception $e)
+        {
+            report($e);
+            return back()->with('error','Oups ! <br> Une erreur s\'est produite !');
+        }
     }
 
     /**

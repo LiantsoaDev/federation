@@ -96,7 +96,7 @@
               <div class="card__content">
 
                 <div class="post__category">
-                  <span class="label posts__cat-label">The Team</span>
+                  <span class="label posts__cat-label">{{$array->categorie}}</span>
                 </div>
                 <header class="post__header">
                   <h2 class="post__title">{{$array->titre}}</h2>
@@ -304,13 +304,13 @@
                   @foreach($articleMois as $rec)
                   <li class="posts__item posts__item--category-{{rand(1,3)}}">
                     <figure class="posts__thumb">
-                      <a href="#"><img src="{{asset('images/uploads/'.$rec->firstimage)}}" width="70" alt=""></a>
+                      <a href="{{route('front.details',[$rec->id,$rec->slug])}}"><img src="{{asset('images/uploads/'.$rec->firstimage)}}" width="70" alt=""></a>
                     </figure>
                     <div class="posts__inner">
                       <div class="posts__cat">
                         <span class="label posts__cat-label">{{$rec->categorie}}</span>
                       </div>
-                      <h6 class="posts__title"><a href="#">{{$rec->titre}}</a></h6>
+                      <h6 class="posts__title"><a href="{{route('front.details',[$rec->id,$rec->slug])}}">{{$rec->titre}}</a></h6>
                       <time datetime="2016-08-23" class="posts__date">{{date('F j, Y',strtotime($array->date_publication))}}</time>
                     </div>
                   </li>

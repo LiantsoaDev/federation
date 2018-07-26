@@ -24,7 +24,7 @@
                     <div class="col-lg-4 col-md-3 col-xs-12">
                       <ul class="posts posts--simple-list main-nav__ul">
                         <li class="main-nav__title">Notre communauté </li>
-                        <li><a href="{{route('front.error')}}">Les Entraineurs membres de la WABC</a></li>
+                        <li><a href="{{route('front.coaches.get')}}">Les Entraineurs membres de la WABC</a></li>
                         <li><a href="{{route('front.error')}}">Les mutations</a></li>
                         <li><a href="{{route('front.error')}}">Les clubs</a></li>
                         <li><a href="{{route('front.error')}}">Les Membres de la fédération</a></li>

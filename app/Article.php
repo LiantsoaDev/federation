@@ -77,7 +77,7 @@ class Article extends Model
 	*/
 	public function getAllArticles()
 	{
-		return $this->getQueryArticle()->orderBy('articles.created_at','desc')->paginate(15);
+		return $this->getQueryArticle()->orderBy('articles.priorite','desc')->orderBy('articles.created_at','desc')->paginate(15);
 	}
 
 	/**
@@ -209,6 +209,16 @@ class Article extends Model
 			return '<span class="label label-sm label-success">Publié</span>';
 		else
 			return '<span class="label label-sm label-danger">Archivé</span>';
+	}
+
+	/**
+	* compter les priorites
+	* 
+	* @return \Illuminate\Http\Response
+	*/
+	public function counter()
+	{
+		return self::where('priorite',1)->count();
 	}
 
 }

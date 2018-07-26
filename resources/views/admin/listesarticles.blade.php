@@ -41,7 +41,6 @@
                                         <tr>
                                             <th data-toggle="true">Image illustration</th>
                                             <th>Titre de l'Article</th>
-                                            <th data-hide="phone, tablet">Description des Articles</th>
                                             <th data-hide="phone, tablet">Date de publication</th>
                                             <th data-hide="phone, tablet">Statut</th>
                                             <th data-hide="phone, tablet">Options</th>
@@ -53,9 +52,8 @@
                                     	@foreach( $all as $a )
 
                                         <tr>
-                                            <td><div class="text-center"><img src="{{asset('images/uploads/'.$a->image)}}" class="rounded" alt="..." width="250" height="150"></div></td>
-                                            <td>{{$a->titre}}</td>
-                                            <td>{!! $a->contenu !!}<hr><b>Tags: <i>{{$a->tag}}</i></b></td>
+                                            <td><div class="text-center"><img src="{{asset('images/uploads/'.$a->image)}}" class="rounded" alt="..." width="200" height="100"></div></td>
+                                            <td>{{$a->titre}}<hr><b>Tags: <i>{{$a->tag}}</i></b></td>
                                             <td>{{ $a->date_publication }}</td>
                                             <td>{!! $a->statut !!}</td>
                                             <td><div class="panel-body demo-jasmine-btn"><a href="{{route('modif.article',$a->id)}}" class="btn btn-default btn-icon btn-circle icon-lg fa fa-edit"></a><a href="{{route('detail.article.admin',$a->id)}}" class="btn btn-mint btn-icon btn-circle icon-lg fa fa-eye"></a>{!!$a->priorite!!}<a href="{{route('article.archive',$a->id)}}" class="btn btn-danger btn-icon btn-circle icon-lg fa fa-trash"></a></div></td>
