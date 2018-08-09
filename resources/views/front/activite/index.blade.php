@@ -46,7 +46,8 @@
 
           <!-- Content -->
           <div class="content col-md-8">
-
+            
+            @if(!array_is_empty($data))
              <!-- Team Roster: Table -->
             <div class="card card--has-table">
               <div class="card__header card__header--has-btn">
@@ -89,6 +90,13 @@
               </div>
             </div>
             <!-- Team Roster: Table / End -->
+            @else
+            <!-- Alerts -->
+            <h3>Oh non ! </h3>
+            <div class="alert alert-warning">
+              <strong>Aucune activité n'a été assigné pour cette saison pour le moment! Revisiter ultérieurement Merci. <br /><a href="{{route('home')}}">Revenir à l'Accueil</a></strong>
+            </div>
+            @endif
 
           </div>
           <!-- Content / End -->

@@ -47,7 +47,7 @@ class Activite extends Model
     {
         if( is_null($saison))
         {
-            $current = Carbon::now()->subYear()->year.'-'.Carbon::now()->year;
+            $current = Carbon::now()->year;
             $get = self::query()->where('saisons.saison',$current)->get();
         }
         else

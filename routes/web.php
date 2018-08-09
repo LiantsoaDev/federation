@@ -27,7 +27,7 @@ Route::get('articles/{id}/{slug}',['as' => 'front.details', 'uses' => 'ArticlesC
     Route::get('missions-attributions',['as' => 'front.missions-attributions','uses' => 'MissionsController@getmission']);
 //Route Reglement interieur de la fmbb
     Route::get('reglement-interieur',['as' => 'front.reglement-interieur','uses' => 'ReglementsController@get']);
-//Route Programme d'activite de la fmbb
+//Route Programme d'activite de la fmbb 
     Route::get('programme-activite',['as' => 'front.programme.activite','uses' => 'ActivitesController@getactivite']);
 //Route get Autre programme d'activite
     Route::get('saison/{saison}',['as' => 'front.activite.autre','uses' => 'ActivitesController@getanothersaison'])->where('saison','[a-z0-9\-]+');
@@ -188,7 +188,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     //Route Update reglement interieur fmbb
     Route::post('update-reglement-interieur',['as' => 'update.reglement.interieur', 'uses' => 'ReglementsController@update']);
 
-    //Route Programme Activite fmbb
+    //Route Programme Activite fmbb Backoffice
     Route::get('programme-activite',['as' => 'admin.fmbb.activite', 'uses' => 'ActivitesController@index']);
     //Route show form edit Activite fmbb
     Route::get('insertion-programme-activite',['as' => 'admin.fmbb.edit', 'uses' => 'ActivitesController@edit']);
@@ -238,6 +238,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('ajout-categorie',['as' => 'admin.categorie.insert','uses' => 'CategoriesController@insert']);
     //Action modification categorie
     Route::post('update-categorie',['as' => 'admin.categorie.update', 'uses' => 'CategoriesController@update']);
+    //Suppression categorie
+    Route::get('supprimer-categorie/{id}',['as' => 'admin.categorie.delete' , 'uses' => 'CategoriesController@delete'])->where('id','[0-9]+');
 
     //Route gestion des membres de WABC
     Route::get('gestion-membres-wabc',['as' => 'admin.wabc.show','uses' => 'WabcsController@show']);
@@ -248,6 +250,13 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     //Route suppression membre WABC
     Route::get('supprimer-membre-wabc/{id}',['as' => 'admin.community.delete','uses' => 'WabcsController@delete'])->where('id','[0-9]+');
 
-
+    //Route organigramme Backoffice
+    Route::get('gestion-organigramme',['as' => 'admin.fmbb.orga','uses' => 'OrganigrammesController@index']);
+    //insertion organigramme Action
+    Route::post('insert-organigramme',['as' => 'admin.orga.insert', 'uses' => 'OrganigrammesController@create']);
+    //modification organigramme Action
+    Route::post('update-organigramme',['as' => 'admin.orga.update','uses' => 'OrganigrammesController@update']);
+    //suppression organigramme link
+    Route::get('supprimer-organigramme/{id}',['as' => 'admin.orga.delete','uses' => 'OrganigrammesController@delete'])->where('id','[0-9]+');
 
 });

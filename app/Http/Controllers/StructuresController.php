@@ -7,6 +7,7 @@ use App\Structure;
 use App\Http\Controllers\ImagesController;
 use App\Image;
 use Validator;
+use App\Organigramme;
 
 use App\Http\Controllers\ManagersInfo;
 use App\Http\Controllers\CoversController;
@@ -153,9 +154,10 @@ class StructuresController extends Controller
         $time = date('Y-m-d H');
 
         $datas  = Structure::orderBy('position_system','asc')->get();
-
         $seo = MetaDatasController::index($titre,$contenu,$tags,route('front.comite.executif'),$time);
-        return view('front.comite.executif.index',compact('parameters','logo','titre','contenu','tags','time','seo','datas'));
+        //organigramme
+        $organigramme = Organigramme::all();
+        return view('front.comite.executif.index',compact('parameters','logo','titre','contenu','tags','time','seo','datas','organigramme'));
      }
 
 }

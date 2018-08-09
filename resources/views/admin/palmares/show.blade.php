@@ -44,6 +44,23 @@
                                     <!--===================================================-->
                                     <div class="panel-body">
                                         <div class="table-responsive">
+                                            @if( array_is_empty($datas) )
+                                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                            <!-- Warning Alert layout example -->
+                                            <div class="alert alert-dark media fade in">
+                                                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                                <div class="media-left">
+                                                    <span class="icon-wrap icon-wrap-xs alert-icon">
+                                                    <i class="fa fa-bolt fa-lg"></i>
+                                                    </span>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="alert-title">Aucun donnée trouvé</h4>
+                                                    <p class="alert-message">Oups ! nous n'avons trouvé aucune donnée n'a été trouvé.</p>
+                                                </div>
+                                            </div>
+                                            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                            @else
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
@@ -61,7 +78,7 @@
                                                         <td><i class="fa fa-trophy"></i></td>
                                                         <td><div class="label label-table label-primary">{{ucfirst($dt->libellecategorie)}}</div></td>
                                                         <td class="col-sm-6">{{$dt->prix}}</td>
-                                                        <td><i class="fa fa-clock-o"></i> {{date('d/m/Y',strtotime($dt->date))}}</td>
+                                                        <td><i class="fa fa-clock-o"></i> {{date('Y',strtotime($dt->date))}}</td>
                                                         <td><div class="label label-table label-mint">{{ucfirst($dt->genre)}}</div></td>
                                                         <td>
                                                         	<a href="{{route('admin.palmares.edit',$dt->id_palmares)}}" class="btn btn-default fa fa-pencil"></a>
@@ -72,6 +89,7 @@
                                                 @endforeach
                                                 </tbody>
                                             </table>
+                                            @endif
                                         </div>
                                     </div>
                                     <!--===================================================-->

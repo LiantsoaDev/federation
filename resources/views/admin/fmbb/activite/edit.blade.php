@@ -24,7 +24,7 @@
                                     @endif
 
                                     <div class="panel-body">
-                                        <p>Le programme d'activité que vous allez insérer s'appliquera pendant l'année en cours. Ex: 2017-2018</p>
+                                        <p>Le programme d'activité que vous allez insérer s'appliquera pendant l'année en cours. Ex: 2017</p>
                                         <br>
 
                                        <div class="carousel slide" id="c-slide-2" data-ride="carousel">
@@ -36,17 +36,13 @@
                                                          <label for="psw"><span class="fa fa-list-ol"></span> Saison : </label>
                                                            <select class="form-control" name="saison">
 
-                                                            @if( !empty($saison))
-                                                                <option value="{{$saison}}">{{$saison}}</option>
-                                                            @else
-                                                                
-                                                                <option value="{{ \Carbon\Carbon::now()->year }}-{{ \Carbon\Carbon::now()->addYear()->year }}">{{ \Carbon\Carbon::now()->year }}-{{ \Carbon\Carbon::now()->addYear()->year }}</option>
-
-                                                                 <option value="{{ \Carbon\Carbon::now()->subYear()->year }}-{{ \Carbon\Carbon::now()->year }}">{{ \Carbon\Carbon::now()->subYear()->year }}-{{ \Carbon\Carbon::now()->year }}</option>
-
-                                                                 <option value="{{ \Carbon\Carbon::now()->subYear(2)->year }}-{{ \Carbon\Carbon::now()->subYear(1)->year }}">{{ \Carbon\Carbon::now()->subYear(2)->year }}-{{ \Carbon\Carbon::now()->subYear(1)->year }}</option>
-                                                            
-                                                            @endif
+                                                            @foreach($saison as $value)
+                                                                @if( !empty($data) && $value->saison == $data->saison)
+                                                                    <option value="{{$value->saison}}" selected="selected">{{$value->saison}}</option>
+                                                                @else
+                                                                    <option value="{{$value->saison}}">{{$value->saison}}</option>
+                                                                @endif
+                                                            @endforeach
 
                                                            </select>
                                                         </div>

@@ -119,9 +119,12 @@
                                                 <li><a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Historiques </a></li>
                                                 <li><a href="{{route('admin.palmares.show')}}"><i class="fa fa-caret-right"></i> Palmarés </a></li>
                                                 <li>
+                                                    <a href="{{route('admin.fmbb.orga')}}"><i class="fa fa-caret-right"></i> Organigramme </a>
+                                                </li>
+                                                <li>
                                                     <a href="mail-mailview.html"><i class="fa fa-caret-right"></i> Programme d'activités   <span class="label label-mint pull-right"> + </span></a>
                                                     <ul class="collapse">
-                                                        <li><a href="{{route('admin.fmbb.activite')}}"><i class="fa fa-caret-right"></i> saison {{ \Carbon\Carbon::now()->subYear()->year }}-{{ \Carbon\Carbon::now()->year }} </a></li>
+                                                        <li><a href="{{route('admin.fmbb.activite')}}"><i class="fa fa-caret-right"></i> saison {{ \Carbon\Carbon::now()->year }} </a></li>
                                                     </ul>
                                                 </li>
                                                 <li><a href="{{route('admin.wabc.show')}}"><i class="fa fa-caret-right"></i> W.A.B.C </a></li>

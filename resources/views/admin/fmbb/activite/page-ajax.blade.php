@@ -18,18 +18,19 @@
                                             @foreach( $data as $value )
                                             <tr>
                                                 <td>{{$value->saison_id}}</td>
-                                                <td>{{$value->saison}}</td>
-                                                <td>{{$value->contenu}}</td>
+                                                <td class="col-sm-2">{{$value->saison}}</td>
+                                                <td class="col-sm-6">{{$value->contenu}}</td>
                                                 <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{ date('d/m/Y',strtotime($value->debut)) }} </span></td>
                                                 <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{ date('d/m/Y',strtotime($value->fin)) }} </span></td>
                                                 <td>
                                                     <div class="label label-table label-success">{{ (empty($value->options)? 'Aucune option' : $value->options) }}</div>
                                                 </td>
-                                                <td>
+                                                <td class="col-sm-3">
                                                 	<div class="btn-group">
 		                                                <a href="{{route('admin.fmbb.edit')}}" class="btn btn-default"><i class="fa fa-plus"></i></a>
 		                                                <a href="{{route('update.form.activite',$value->id)}}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
-		                                                <button class="btn btn-default"><i class="fa fa-trash"></i></button>
+		                                                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#delete{{$value->idactivite}}"><i class="fa fa-trash"></i></a>
+                                                        @include('admin.fmbb.activite.modal')
 		                                            </div>
                                                 </td>
                                             </tr>
@@ -44,7 +45,7 @@
                                       <div class="col-md-8">
                                         <div class="alert alert-success" role="alert">
                                           <h4 class="alert-heading">Avertissement!</h4>
-                                          <p>Aucune donnée disponible pour la saison {{ \Carbon\Carbon::now()->subYear()->year }}-{{ \Carbon\Carbon::now()->year }} </p>
+                                          <p>Aucune donnée disponible pour la saison <b>{{$saison}}</b> </p>
                                         </div>
                                        </div>
                                 </div>

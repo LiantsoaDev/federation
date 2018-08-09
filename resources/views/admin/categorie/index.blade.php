@@ -69,7 +69,8 @@
                                                         <td>
                                                         	<button class="btn btn-default fa fa-pencil" data-toggle="modal" data-target="#update{{$categ->id}}"></button>
                                                             @include('admin.categorie.update')
-                                                			<button class="btn btn-danger fa fa-trash"></button>
+                                                			<button class="btn btn-danger fa fa-trash" data-toggle="modal" data-target="#delete{{$categ->id}}"></button>
+                                                            @include('admin.categorie.delete')
                                                         </td>
                                                     </tr>
                                                 @endforeach

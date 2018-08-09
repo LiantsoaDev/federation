@@ -37,7 +37,7 @@
                                                     <tr>
                                                         <td><i class="fa fa-trophy"></i></td>
                                                         <td class="col-sm-6">{{$dt->prix}}</td>
-                                                        <td><i class="fa fa-clock-o"></i> {{date('d/m/Y',strtotime($dt->date))}}</td>
+                                                        <td><i class="fa fa-clock-o"></i> {{date('Y',strtotime($dt->date))}}</td>
                                                         <td><div class="label label-table label-mint">{{ucfirst($dt->genre)}}</div></td>
                                                         <td>
                                                         	<a href="{{route('admin.palmares.edit',$dt->id_palmares)}}" class="btn btn-default fa fa-pencil"></a>

@@ -28,7 +28,11 @@
                                                 <select class="form-control" name="saison" onchange="getseason(this.value)">
                                                 
                                                 @foreach($listsaison as $list)
-                                                    <option value="{{$list->saison}}">{{$list->saison}}</option>
+                                                    @if(date('Y') == $list->saison )
+                                                        <option value="{{$list->saison}}" selected="selected">{{$list->saison}}</option>
+                                                    @else
+                                                        <option value="{{$list->saison}}">{{$list->saison}}</option>
+                                                    @endif
                                                 @endforeach
 
                                                 </select>
@@ -43,7 +47,6 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>#</th>
                                                 <th>Saison</th>
                                                 <th>Programme d'activité</th>
                                                 <th>Date de début</th>
@@ -57,16 +60,15 @@
 
                                             @foreach( $data as $value )
                                             <tr>
-                                                <td>{{$value->saison_id}}</td>
                                                 <td>{{$value->saison}}</td>
-                                                <td>{{$value->contenu}}</td>
+                                                <td class="col-sm-6">{{$value->contenu}}</td>
                                                 <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{ date('d/m/Y',strtotime($value->debut)) }} </span></td>
                                                 <td><span class="text-muted"><i class="fa fa-clock-o"></i> {{ date('d/m/Y',strtotime($value->fin)) }} </span></td>
-                                                <td>{{$value->lieu}}</td>
+                                                <td class="col-sm-2">{{$value->lieu}}</td>
                                                 <td>
                                                     <div class="label label-table label-success">{{ (empty($value->options)? 'Aucune option' : $value->options) }}</div>
                                                 </td>
-                                                <td>
+                                                <td class="col-sm-3">
                                                 	<div class="btn-group">
 		                                                <a href="{{route('admin.fmbb.edit')}}" class="btn btn-default"><i class="fa fa-plus"></i></a>
 		                                                <a href="{{route('update.form.activite',$value->idactivite)}}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
@@ -86,7 +88,7 @@
                                       <div class="col-md-8">
                                         <div class="alert alert-success" role="alert">
                                           <h4 class="alert-heading">Avertissement!</h4>
-                                          <p>Aucune donnée disponible pour la saison {{ \Carbon\Carbon::now()->subYear()->year }}-{{ \Carbon\Carbon::now()->year }} </p>
+                                          <p>Aucune donnée disponible pour la saison {{date('Y')}} </p>
                                         </div>
                                        </div>
                                 </div>

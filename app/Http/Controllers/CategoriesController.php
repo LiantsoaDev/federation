@@ -52,7 +52,8 @@ class CategoriesController extends Controller
         $categorie = Categorie::orderBy('libellecategorie','desc')->get();
         $action = action('CategoriesController@insert');
         $update = action('CategoriesController@update');
-        return view('admin.categorie.index',compact('action','categorie','update'));
+        $delete = "#";
+        return view('admin.categorie.index',compact('action','categorie','update','delete'));
     }
 
     /**
@@ -85,18 +86,38 @@ class CategoriesController extends Controller
 
     public function update(Request $request)
     {
-        $validation = $this->validate($request,['categorie' => 'required'],['required'=>'Le champ :attribute est obligatoire']);
-        //verification
-        $load = Categorie::where('libellecategorie','like','%'.$request->categorie.'%')->first();
-        if( !empty($load->libellecategorie) )
-            return back()->with('error','La categorie '.$load->libellecategorie.' existe déjà');
-        else{
-            $update = Categorie::findOrFail($request->id);
-            $update->libellecategorie = $request->categorie;
-            $update->save();
-            return back()->with('success','La categorie '.$request->categorie.' a été modifié !');
+        try{
+            $validation = $this->validate($request,['categorie' => 'required'],['required'=>'Le champ :attribute est obligatoire']);
+            $subject = Categorie::findOrFail($request->id);
+            $subject->libellecategorie = $request->categorie;
+            $subject->save();
+            return back()->with('success',"La categorie a été modifiée avec succés");
         }
+        catch (Exception $e)
+        {
+            report($e);
+            return back()->with('error',"Oups ! <br> Une erreur s'est produite. Veuillez réessayer ulterieurement !<br>");
+        }
+    }
 
+    /**
+    * delete a categorie
+    * 
+    * @param \Illuminate\Http\Request
+    * @return \Illuminate\Http\Response
+    */
+
+    public function delete($id)
+    {
+        try{
+            $find = Categorie::findOrFail($id);
+            $find->delete();
+            return back()->with('success','La catégorie a été supprimée avec succés');
+        }
+        catch (Exception $e)
+        {
+            report($e);
+        }
     }
 
 }

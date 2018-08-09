@@ -47,7 +47,7 @@ class ActivitesController extends Controller
      public function index()
      {
      	$data = $this->activite->findprogramm();
-          $listsaison = Saison::all();
+          $listsaison = Saison::orderBy('saison','desc')->get();
      	return view('admin.fmbb.activite.index',compact('data','listsaison'));
      }
 
@@ -60,8 +60,9 @@ class ActivitesController extends Controller
 
      public function edit()
      {    
+          $saison = Saison::orderBy('saison','desc')->get();
           $action = action('ActivitesController@insert');
-     	return view('admin.fmbb.activite.edit',compact('action'));
+     	return view('admin.fmbb.activite.edit',compact('action','saison'));
      }
 
      /**
@@ -111,7 +112,7 @@ class ActivitesController extends Controller
      public function show($id)
      {
           $data = $this->activite->getOneProgramm($id);
-          $saison = $data->saison;
+          $saison = Saison::orderBy('saison','desc')->get();
           $action = action('ActivitesController@update');
           return view('admin.fmbb.activite.edit',compact('action','saison','data'));
      }
@@ -153,7 +154,7 @@ class ActivitesController extends Controller
      public function getByAjaxSeason($saison)
      {
           $data = $this->activite->findprogramm($saison);
-          echo view('admin.fmbb.activite.page-ajax',compact('data'));
+          echo view('admin.fmbb.activite.page-ajax',compact('data','saison'));
      }
 
      /**
@@ -191,11 +192,19 @@ class ActivitesController extends Controller
 
           //Get programme d'activite
           $data = $this->activite->findprogramm($this->season);
-          foreach($data as $value)
+          if( !array_is_empty($data) )
           {
-               $current = $value->saison;
+               foreach($data as $value)
+               {
+                    $current = $value->saison;
+               }
           }
-          $getsaison = Saison::get(['saison']);
+          else
+          {
+               $current = $this->season;
+          }
+          
+          $getsaison = Saison::orderBy('saison','desc')->get(['saison']);
           foreach ($getsaison as $key => $value) {
                $values[] = $value->saison;
           }

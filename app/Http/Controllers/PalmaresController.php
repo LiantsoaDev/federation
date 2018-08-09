@@ -174,7 +174,7 @@ class PalmaresController extends Controller
         $getsaison = Categorie::get(['id','libellecategorie']);
         foreach($getsaison as $ids)
         {
-            $requete = $querypalmares->getQueryPalmares()->where('categorie_id',$ids->id)->get();
+            $requete = $querypalmares->getQueryPalmares()->where('categorie_id',$ids->id)->orderBy('date','desc')->get();
             $tabpalmares[ strtolower($ids->libellecategorie)] = $requete; 
             foreach($requete as $rqt)
             {
@@ -183,6 +183,7 @@ class PalmaresController extends Controller
             }  
         }
         $palmares = json_decode(json_encode($tabpalmares),false);
+        array_multisort($date,SORT_DESC);
         $dates = array_unique($date);
         $compets = array_unique($compet);
 
@@ -209,7 +210,7 @@ class PalmaresController extends Controller
     {
         $instance = new Palmares();
         $instance->query = $instance->getQueryPalmares();
-        $palmares = $instance->filters($request)->get();
+        $palmares = $instance->filters($request)->orderBy('date','desc')->get();
         //listes compétitions
         $getcompet = $instance->getQueryPalmares()->get();
         foreach ($getcompet as $value) {
