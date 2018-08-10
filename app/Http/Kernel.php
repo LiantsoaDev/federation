@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'sessionidevent' => \App\Http\Middleware\SessionIdevent::class,
         'verifyTypeCateg' => \App\Http\Middleware\VerifyTypePost::class,
         'verifyarticle' => \App\Http\Middleware\Verifyarticle::class,
-        'verifSeason' => \App\Http\Middleware\VerifSeason::class
+        'verifSeason' => \App\Http\Middleware\VerifSeason::class,
+        'role' => \App\Http\Middleware\CheckRole::class
     ];
 }

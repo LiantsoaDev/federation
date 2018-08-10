@@ -47,7 +47,8 @@ Route::get('articles/{id}/{slug}',['as' => 'front.details', 'uses' => 'ArticlesC
     Route::get('ligues-et-regions',['as' => 'front.ligue.region','uses' => 'RegionsController@getRegion']);
 //Route entraineurs membre de la WABC
     Route::get('les-entraineurs-membres-de-la-wabc',['as' => 'front.coaches.get','uses' => 'WabcsController@getWabc']);
-
+//Route Page - Membre de la fédération fmbb
+    Route::get('les-membres-de-la-federation',['as' => 'front.membre.index','uses' => 'MembresController@getMember']);
 
 //Route Page d'Erreur
     Route::get('oups',['as' => 'front.error','uses' => 'ErrorsController@index']);
@@ -56,7 +57,7 @@ Route::get('articles/{id}/{slug}',['as' => 'front.details', 'uses' => 'ArticlesC
 
 /*-----------------------------Backoffice admin -------------------------------------------- */
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware("auth")->group(function () {
 
     Route::get('/home',['as' => 'show.event', 'uses' => 'EventsController@showevents']);
 
@@ -258,5 +259,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('update-organigramme',['as' => 'admin.orga.update','uses' => 'OrganigrammesController@update']);
     //suppression organigramme link
     Route::get('supprimer-organigramme/{id}',['as' => 'admin.orga.delete','uses' => 'OrganigrammesController@delete'])->where('id','[0-9]+');
+
+
+    //Gestion des Membres 
+    Route::get('membres',['as' => 'admin.membre.index','uses' => 'MembresController@index']);
+    //Action Update Membres
+    Route::post('update-membres',['admin.membre.update','uses' => 'MembresController@update']);
 
 });

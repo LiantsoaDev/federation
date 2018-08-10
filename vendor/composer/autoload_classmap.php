@@ -40,6 +40,7 @@ return array(
     'App\\Http\\Controllers\\LivesController' => $baseDir . '/app/Http/Controllers/LivesController.php',
     'App\\Http\\Controllers\\ManagersInfo' => $baseDir . '/app/Http/Controllers/ManagersInfo.php',
     'App\\Http\\Controllers\\MatchsController' => $baseDir . '/app/Http/Controllers/MatchsController.php',
+    'App\\Http\\Controllers\\MembresController' => $baseDir . '/app/Http/Controllers/MembresController.php',
     'App\\Http\\Controllers\\MetaDatasController' => $baseDir . '/app/Http/Controllers/MetaDatasController.php',
     'App\\Http\\Controllers\\MissionsController' => $baseDir . '/app/Http/Controllers/MissionsController.php',
     'App\\Http\\Controllers\\OrganigrammesController' => $baseDir . '/app/Http/Controllers/OrganigrammesController.php',

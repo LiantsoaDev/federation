@@ -50,7 +50,7 @@
                  <label for="psw"><span class="fa fa-briefcase"></span> &nbsp;Dans quel page l'afficher ? </label>
                  <select class="form-control" name="page">
                    <option value="{{route('front.comite.executif')}}">Comité Executif</option>
-                   <option value="#">Les Membres de la FMBB</option>
+                   <option value="{{route('front.membre.index')}}">Les Membres de la FMBB</option>
                  </select>
                </div>
                

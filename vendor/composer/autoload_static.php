@@ -371,6 +371,7 @@ class ComposerStaticInit0ba5f47a1cef63437d77d908766e44ec
         'App\\Http\\Controllers\\LivesController' => __DIR__ . '/../..' . '/app/Http/Controllers/LivesController.php',
         'App\\Http\\Controllers\\ManagersInfo' => __DIR__ . '/../..' . '/app/Http/Controllers/ManagersInfo.php',
         'App\\Http\\Controllers\\MatchsController' => __DIR__ . '/../..' . '/app/Http/Controllers/MatchsController.php',
+        'App\\Http\\Controllers\\MembresController' => __DIR__ . '/../..' . '/app/Http/Controllers/MembresController.php',
         'App\\Http\\Controllers\\MetaDatasController' => __DIR__ . '/../..' . '/app/Http/Controllers/MetaDatasController.php',
         'App\\Http\\Controllers\\MissionsController' => __DIR__ . '/../..' . '/app/Http/Controllers/MissionsController.php',
         'App\\Http\\Controllers\\OrganigrammesController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrganigrammesController.php',

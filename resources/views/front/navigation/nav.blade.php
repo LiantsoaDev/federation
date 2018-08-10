@@ -27,7 +27,7 @@
                         <li><a href="{{route('front.coaches.get')}}">Les Entraineurs membres de la WABC</a></li>
                         <li><a href="{{route('front.error')}}">Les mutations</a></li>
                         <li><a href="{{route('front.error')}}">Les clubs</a></li>
-                        <li><a href="{{route('front.error')}}">Les Membres de la fédération</a></li>
+                        <li><a href="{{route('front.membre.index')}}">Les Membres de la fédération</a></li>
                         <li><a href="{{route('front.error')}}">Les Ligues</a></li>
                       </ul>
                     </div>

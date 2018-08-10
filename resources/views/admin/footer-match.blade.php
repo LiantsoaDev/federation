@@ -109,6 +109,7 @@
                                             <!--Submenu-->
                                             <ul class="collapse">
                                                 <li><a href="{{route('admin.fmbb.presentation')}}"><i class="fa fa-caret-right"></i> Présentation </a></li>
+                                                <li><a href="{{route('admin.membre.index')}}"><i class="fa fa-caret-right"></i> Membre de la fédération </a></li>
                                                 <li><a href="{{route('admin.fmbb.admin')}}"><i class="fa fa-caret-right"></i> Comités executifs </a></li>
                                                 <li><a href="{{route('admin.fmbb.comite-technique')}}"><i class="fa fa-caret-right"></i> Comités Techniques</a></li>
                                                 <li><a href="{{route('admin.fmbb.region')}}"><i class="fa fa-caret-right"></i> Régions</a></li>
