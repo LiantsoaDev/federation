@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                   <label for="psw"><span class="fa fa-briefcase"></span> &nbsp;Fédération affilée</label>
-                  <input type="text" class="form-control" id="psw" name="federation" placeholder="Fédération actuelle de l'intitulé...">
+                  <input type="text" class="form-control" id="psw" name="federation" value="Fédération Malagasy du Basket-ball (FMBB)" autocomplete="on">
                 </div>
                 <div class="form-group">
                   <label for="psw"><span class="fa fa-briefcase"></span> &nbsp;Licence ID</label>

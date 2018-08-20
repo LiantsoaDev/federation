@@ -28,7 +28,7 @@
                                                 <td class="col-sm-3">
                                                 	<div class="btn-group">
 		                                                <a href="{{route('admin.fmbb.edit')}}" class="btn btn-default"><i class="fa fa-plus"></i></a>
-		                                                <a href="{{route('update.form.activite',$value->id)}}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+		                                                <a href="{{route('update.form.activite',$value->idactivite)}}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
 		                                                <a href="#" class="btn btn-default" data-toggle="modal" data-target="#delete{{$value->idactivite}}"><i class="fa fa-trash"></i></a>
                                                         @include('admin.fmbb.activite.modal')
 		                                            </div>

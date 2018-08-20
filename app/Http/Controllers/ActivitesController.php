@@ -133,13 +133,17 @@ class ActivitesController extends Controller
                'lieu' => 'required',
                'tags' => 'required'
           ],['required' => 'Ce champ est obligatoire']);
-
           $updateActivite = Activite::find($request->id);
           $updateActivite->contenu = $request->contenu;
           $updateActivite->tags = $request->tags;
           $updateActivite->lieu = $request->lieu;
           $updateActivite->debut = date('Y-m-d',strtotime($request->start));
           $updateActivite->fin = date('Y-m-d',strtotime($request->end));
+          if($request->saison)
+          {
+               $saison = Saison::where('saison',$request->saison)->first();
+               $updateActivite->saison_id = $saison->id;
+          }
           $updateActivite->save();
           return back()->with('success',"La modification du Programme a été effectué avec succès !");
      }

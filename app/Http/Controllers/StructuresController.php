@@ -64,8 +64,7 @@ class StructuresController extends Controller
         $validate = Validator::make($datas,[
             'noms' => 'required',
             'fonction' => 'required',
-            'contact' => 'required',
-            'email' => 'required|email'
+            'contact' => 'required'
         ]);
         if($validate->fails())
           return back()->withErrors($validate)->withInput();
@@ -74,9 +73,12 @@ class StructuresController extends Controller
        $struct->noms = $request->noms;
        $struct->fonctions = $request->fonction;
        $struct->contacts = $request->contact;
-       $struct->emails = $request->email;
-       $struct->position_system = $request->position;
+       if( $request->email)
+            $struct->emails = $request->email;
+        else 
+            $struct->emails  = 'no assign';
 
+       $struct->position_system = $request->position;
        if( is_null($request->file ))
         $struct->avatarurl = Image::default();
       else{
@@ -101,10 +103,8 @@ class StructuresController extends Controller
         $validation = Validator::make($request->all(),[
           'noms' => 'required',
           'fonction' => 'required',
-          'contact' => 'required',
-          'email' => 'required|email'
+          'contact' => 'required'
         ]);
-
         if($validation->fails())
           return back()->withErrors($validation)->withInput();
 
@@ -112,7 +112,10 @@ class StructuresController extends Controller
         $update->noms = $request->noms;
         $update->fonctions = $request->fonction;
         $update->contacts = $request->contact;
-        $update->emails = $request->email;
+        if( $request->email )
+            $update->emails = $request->email;
+        else
+            $update->emails = 'non assign';
         $update->position_system = $request->position;
 
         if( !is_null($request->file('file')) ){

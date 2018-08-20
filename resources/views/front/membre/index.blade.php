@@ -23,8 +23,9 @@
     ================================================== -->
     <div class="site-content">
       <div class="container">
-       @foreach($organigramme as $org) 
-        @if( URL::current() == $org->page )
+
+       @foreach($organigramme as $org)
+        @if( preg_match( '"'.$url.'"' , '"'.$org->page.'"') )
          <h2>Structure Officiel de la fédération auprès de l'IBF</h2>
           <p>Cette organigramme est une représentation schématique des liens fonctionnels, organisationnels et hiérarchiques de la fédération auprès de l'IBF ( International Basketball Foundation). Il sert ainsi à donner une vue d’ensemble de la répartition des postes et fonctions au sein d’une structure. Cette cartographie simplifiée permet de visualiser les différentes relations de commandement ainsi que les rapports de subordination d’où une vision simple et claire des structures complexes.</p>
 
@@ -34,7 +35,7 @@
             <img src="{{asset('/images/organigramme/'.$org->organigramme)}}" alt="">
             <figcaption>{{$org->titre}}</figcaption>
           </figure>
-          @endif
+        @endif
       @endforeach
         <!-- Wishlist -->
         <div class="card card--has-table">
@@ -74,6 +75,7 @@
         </div>
         <!-- Wishlist / End -->
       </div>
+
     </div>
 
     <!-- Content / End -->

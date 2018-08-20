@@ -64,7 +64,7 @@ class RegionsController extends Controller
      public function create(Request $request)
      {
      	try{
-               $validation = $this->validate($request,['president' => 'required'],['required' => 'Le champ :attribute est obligatoire']);
+               $validation = $this->validate($request,['noms' => 'required'],['required' => 'Le champ :attribute est obligatoire']);
                $new = new Region();
                //instance ImagesController
                $image = new ImagesController();
@@ -72,12 +72,12 @@ class RegionsController extends Controller
                //verifier si Ce president existe deja 
                if( $this->region->authorized($request) )
                {
-                    $new->president = $request->president;
+                    $new->president = $request->noms;
                }
                //verifier si ce ligue existe dans la BDD
                if( $this->region->existed($request) )
                {
-                    $new->libelle = $request->region;
+                    $new->libelle = ucfirst(strtolower($request->region));
                     if( $request->logo )
                          $new->logo_ligue = $image->uploadSimple($request->logo);
                     if( $request->file )
@@ -155,8 +155,8 @@ class RegionsController extends Controller
           try{
                $region = Region::where('idregion',$id)->first();
                $nom_region = $region->LIBELLE;
-               $region->delete();
-               return back()->with('success','Les informations concernant la region '.$nom_region.' a été supprimé' );
+               if(Region::where('idregion',$id)->delete())
+                    return back()->with('success','Les informations concernant la region '.$nom_region.' a été supprimé' );
           }
           catch(Exception $e)
           {

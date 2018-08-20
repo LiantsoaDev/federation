@@ -22,8 +22,9 @@
     ================================================== -->
     <div class="site-content">
       <div class="container">
+
        @foreach($organigramme as $org) 
-        @if( URL::current() == $org->page )
+         @if( preg_match( '"'. URL::current().'"' , '"'.$org->page.'"') )
          <h2>Organigramme et Structure interne</h2>
           <p>L’organigramme est une représentation schématique des liens fonctionnels, organisationnels et hiérarchiques d’une entreprise. Il sert ainsi à donner une vue d’ensemble de la répartition des postes et fonctions au sein d’une structure. Cette cartographie simplifiée permet de visualiser les différentes relations de commandement ainsi que les rapports de subordination d’où une vision simple et claire des structures complexes.</p>
 
@@ -35,6 +36,7 @@
           </figure>
           @endif
       @endforeach
+
         <!-- Wishlist -->
         <div class="card card--has-table">
           <div class="card__header">

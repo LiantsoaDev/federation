@@ -12,12 +12,12 @@
                 {{csrf_field()}}
                 <div class="form-group">
                   <label for="usrname"><span class="fa fa-user"></span> &nbsp;Nom et prénom</label>
-                  <input type="text" class="form-control" id="usrname" name="noms" placeholder="ex: Rakoto Tahiana">
+                  <input type="text" class="form-control" id="usrname" name="noms" placeholder="ex: Rakoto Tahiana" autocomplete="off">
                 </div>
                 @if($modal == 'comite')
                 <div class="form-group">
                   <label for="psw"><span class="fa fa-briefcase"></span> &nbsp;Fonction</label>
-                  <input type="text" class="form-control" id="psw" name="fonction" placeholder="fonction actuelle...">
+                  <input type="text" class="form-control" id="psw" name="fonction" placeholder="fonction actuelle..." autocomplete="off">
                 </div>
                 <div class="form-group">
                   <label for="psw"><span class="fa fa-phone"></span> &nbsp;Contact</label>

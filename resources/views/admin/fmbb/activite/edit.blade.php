@@ -39,6 +39,8 @@
                                                             @foreach($saison as $value)
                                                                 @if( !empty($data) && $value->saison == $data->saison)
                                                                     <option value="{{$value->saison}}" selected="selected">{{$value->saison}}</option>
+                                                                @elseif( date('Y') == $value->saison)
+                                                                    <option value="{{$value->saison}}" selected="selected">{{$value->saison}}</option>
                                                                 @else
                                                                     <option value="{{$value->saison}}">{{$value->saison}}</option>
                                                                 @endif

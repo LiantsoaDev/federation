@@ -12,6 +12,7 @@ use App\Http\Controllers\CoversController;
 use App\Http\Controllers\MetaDatasController;
 use Auth;
 use File;
+use URL;
 
 class MembresController extends Controller
 {
@@ -124,8 +125,15 @@ class MembresController extends Controller
             $user['role'] = "FMBB";
             $user = json_decode(json_encode($user),false);
         }
+        
+        $current_url = URL::current();
+        if( preg_match("/www/i", $current_url ))
+            $url = str_replace('www.','', $current_url);
+        else
+            $url = URL::current();
 
-        $organigramme = Organigramme::where('page',route('front.membre.index'))->get();
+        $organigramme = Organigramme::where('page','like','%' . $url . '%')->get();
+
         foreach ($organigramme as $value) {
             $value->user_name = $user->name;
             $value->user_email = $user->email;
@@ -140,7 +148,7 @@ class MembresController extends Controller
         $time = date('d m Y H');
         $seo = MetaDatasController::index($titre,$contenu,$tags,route('front.membre.index'),$time);
 
-        return view('front.membre.index',compact('seo','organigramme','parameters','logo','titre','contenu','tags','time'));
+        return view('front.membre.index',compact('seo','organigramme','parameters','logo','titre','contenu','tags','time','url'));
     }
 
 
