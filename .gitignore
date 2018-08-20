@@ -12,4 +12,5 @@ yarn-error.log
 .env.example
 fmbb.zip
 /.vscode
+base_de_donnee.sql
 
