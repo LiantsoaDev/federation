@@ -120,42 +120,6 @@
           </nav>
            <!-- end pagination -->
 
-           <aside class="widget widget--sidebar card widget-featured">
-             <!-- <div class="widget__title card__header">
-               <h4>Breaking News</h4>
-             </div> -->
-             <div class="widget__content card__content">
-               <ul class="posts posts--simple-list">
-                 <li class="posts__item posts__item--category-1">
-                   <figure class="posts__thumb">
-                     <a href="#"><img src="{{asset('images/event-1513671848.jpg')}}" height=130px width=130px alt=""></a>
-                   </figure>
-                   <div class="posts__inner">
-                     <div class="posts__cat">
-                       <span class="label posts__cat-label">The Team</span>
-                     </div>
-                     <h6 class="posts__title"><a href="#">The Alchemists just won their Final Game and became Champions!</a></h6>
-                   </div>
-                   <div class="posts__excerpt posts__excerpt--space">
-                     Lorem ipsum dolor sit amet, consectetur adipisi ng elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                     Lorem ipsum dolor sit amet, consectetur adipisi ng elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                   </div>
-                   <footer class="posts__footer card__footer">
-                     <div class="post-author">
-                       <div class="post-author__info">
-                         <h4 class="post-author__name">24/05/2018</h4>
-                       </div>
-                     </div>
-                     <ul class="post__meta meta">
-                       <li class="meta__item meta__item--likes"><a href="#"><i class="meta-like icon-heart"></i> 530</a></li>
-                       <li class="meta__item meta__item--comments"><a href="#">18</a></li>
-                     </ul>
-                   </footer>
-                 </li>
-               </ul>
-             </div>
-           </aside>
-
          </div>
         </div>
     <!-- Content / End -->
