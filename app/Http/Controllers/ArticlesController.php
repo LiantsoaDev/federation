@@ -27,8 +27,8 @@ class ArticlesController extends Controller
     {
     	$this->article = $art;
     	$this->img = new ImagesController();
-      $this->page = new CoversController();
-      $this->comments = new CommentsController();
+        $this->page = new CoversController();
+        $this->comments = new CommentsController();
     }
 
     /**
